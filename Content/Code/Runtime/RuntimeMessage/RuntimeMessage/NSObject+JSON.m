@@ -11,6 +11,11 @@
 
 @implementation NSObject (JSON)
 
+/**
+ 
+ 类的属性和类型，存放到数组中。
+ 
+ */
 - (instancetype)initWithDict:(NSDictionary *)dict {
     if (self = [self init]) {
         // 1. 获取类所有的属性和类型

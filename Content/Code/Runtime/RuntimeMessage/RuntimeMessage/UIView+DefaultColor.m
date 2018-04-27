@@ -15,8 +15,26 @@
 
 static char kDefaultColorKey;
 
+
+/**
+ 关联对象的行为。
+ 
+ 枚举类型objc_AssociationPolicy中定义关联对象的行为。
+
+ OBJC_ASSOCIATION_ASSIGN : 弱引用assign
+ OBJC_ASSOCIATION_RETAIN_NONATOMIC : strong + nonatomic
+ OBJC_ASSOCIATION_COPY_NONATOMIC: copy + nonatomic
+ OBJC_ASSOCIATION_RETAIN: strong + atomic
+ OBJC_ASSOCIATION_COPY: copy + atomic
+ 
+ 
+ 在WWDC发布的内存销毁表，关联对象的生命周期要比对象本身释放的晚很多。
+ 它们会在被 NSObject -dealloc 调用的 object_dispose() 方法中释放。
+ 
+ 
+ */
 - (void)setDefaultColor:(UIColor *)defaultColor {
-    objc_setAssociatedObject(self, &kDefaultColorKey, defaultColor, OBJC_ASSOCIATION_RETAIN);
+    objc_setAssociatedObject(self, &kDefaultColorKey, defaultColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 - (id)defaultColor {
     return objc_getAssociatedObject(self, &kDefaultColorKey);
