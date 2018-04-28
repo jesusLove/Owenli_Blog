@@ -31,6 +31,11 @@ static char kDefaultColorKey;
  在WWDC发布的内存销毁表，关联对象的生命周期要比对象本身释放的晚很多。
  它们会在被 NSObject -dealloc 调用的 object_dispose() 方法中释放。
  
+ 清除对象关联。
+ 
+ 不要使用`objc_removeAssociatedObjects()`，这个方法会删除所有的属性。
+ 
+ 可以调用`objc_setAssociatedObject`方法并传入一个nil值来清除一个关联。
  
  */
 - (void)setDefaultColor:(UIColor *)defaultColor {

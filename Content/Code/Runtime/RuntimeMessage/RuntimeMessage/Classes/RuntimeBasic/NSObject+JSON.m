@@ -12,7 +12,7 @@
 @implementation NSObject (JSON)
 
 /**
- 
+ 字典转Mode
  类的属性和类型，存放到数组中。
  
  */
