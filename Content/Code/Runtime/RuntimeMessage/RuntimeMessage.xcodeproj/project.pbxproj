@@ -125,10 +125,10 @@
 		494BC95220944F3300C0428F /* Aspects */ = {
 			isa = PBXGroup;
 			children = (
-				494BC95320944F3300C0428F /* LICENSE */,
 				494BC95420944F3300C0428F /* Aspects.h */,
-				494BC95520944F3300C0428F /* README.md */,
 				494BC95620944F3300C0428F /* Aspects.m */,
+				494BC95320944F3300C0428F /* LICENSE */,
+				494BC95520944F3300C0428F /* README.md */,
 			);
 			path = Aspects;
 			sourceTree = "<group>";

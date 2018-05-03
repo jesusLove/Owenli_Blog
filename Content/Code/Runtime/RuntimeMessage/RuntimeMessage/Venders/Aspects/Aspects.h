@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
+// 挂载方式
 typedef NS_OPTIONS(NSUInteger, AspectOptions) {
     AspectPositionAfter   = 0,            /// Called after the original implementation (default)
     AspectPositionInstead = 1,            /// Will replace the original implementation.
@@ -28,13 +29,13 @@ typedef NS_OPTIONS(NSUInteger, AspectOptions) {
 @protocol AspectInfo <NSObject>
 
 /// The instance that is currently hooked.
-- (id)instance;
+- (id)instance; // 当前实例
 
 /// The original invocation of the hooked method.
-- (NSInvocation *)originalInvocation;
+- (NSInvocation *)originalInvocation; //
 
 /// All method arguments, boxed. This is lazily evaluated.
-- (NSArray *)arguments;
+- (NSArray *)arguments; // 方法参数
 
 @end
 
