@@ -21,6 +21,7 @@
     self = [super init];
     if (self) {
 #if SD_UIKIT
+        // 当收到，系统内存警告时，清空缓存。
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeAllObjects) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
 #endif
     }
@@ -47,10 +48,10 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
 @interface SDImageCache ()
 
 #pragma mark - Properties
-@property (strong, nonatomic, nonnull) NSCache *memCache;
-@property (strong, nonatomic, nonnull) NSString *diskCachePath;
+@property (strong, nonatomic, nonnull) NSCache *memCache; // 内存存储
+@property (strong, nonatomic, nonnull) NSString *diskCachePath; // 磁盘存储路径
 @property (strong, nonatomic, nullable) NSMutableArray<NSString *> *customPaths;
-@property (strong, nonatomic, nullable) dispatch_queue_t ioQueue;
+@property (strong, nonatomic, nullable) dispatch_queue_t ioQueue; // io队列
 
 @end
 
@@ -75,7 +76,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
 }
 
 - (nonnull instancetype)initWithNamespace:(nonnull NSString *)ns {
-    NSString *path = [self makeDiskCachePath:ns];
+    NSString *path = [self makeDiskCachePath:ns]; // 生成存储路径
     return [self initWithNamespace:ns diskCacheDirectory:path];
 }
 
@@ -85,42 +86,48 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
         NSString *fullNamespace = [@"com.hackemist.SDWebImageCache." stringByAppendingString:ns];
         
         // Create IO serial queue
+        // 磁盘读写队列，串行队列。
         _ioQueue = dispatch_queue_create("com.hackemist.SDWebImageCache", DISPATCH_QUEUE_SERIAL);
         
+        // 配置
         _config = [[SDImageCacheConfig alloc] init];
         
         // Init the memory cache
+        // 初始化内存缓存
         _memCache = [[AutoPurgeCache alloc] init];
         _memCache.name = fullNamespace;
 
         // Init the disk cache
+        // 初始化硬盘缓存
         if (directory != nil) {
+            // 磁盘存储路径
             _diskCachePath = [directory stringByAppendingPathComponent:fullNamespace];
         } else {
             NSString *path = [self makeDiskCachePath:ns];
             _diskCachePath = path;
         }
-
+        // 同步任务
         dispatch_sync(_ioQueue, ^{
             _fileManager = [NSFileManager new];
         });
 
 #if SD_UIKIT
         // Subscribe to app events
+        // 订阅APP事件
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(clearMemory)
                                                      name:UIApplicationDidReceiveMemoryWarningNotification
-                                                   object:nil];
+                                                   object:nil]; // 内存警告
 
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(deleteOldFiles)
                                                      name:UIApplicationWillTerminateNotification
-                                                   object:nil];
+                                                   object:nil]; // 将要终止，删除oldFiles
 
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(backgroundDeleteOldFiles)
                                                      name:UIApplicationDidEnterBackgroundNotification
-                                                   object:nil];
+                                                   object:nil]; // 进入后台
 #endif
     }
 
@@ -131,6 +138,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+// 检测当前队列是否是ioQueue
 - (void)checkIfQueueIsIOQueue {
     const char *currentQueueLabel = dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL);
     const char *ioQueueLabel = dispatch_queue_get_label(self.ioQueue);
@@ -175,6 +183,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
     return filename;
 }
 
+// 生成磁盘存储路径
 - (nullable NSString *)makeDiskCachePath:(nonnull NSString*)fullNamespace {
     NSArray<NSString *> *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     return [paths[0] stringByAppendingPathComponent:fullNamespace];
@@ -207,6 +216,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
         return;
     }
     // if memory cache is enabled
+    // 缓存到内容
     if (self.config.shouldCacheImagesInMemory) {
         NSUInteger cost = SDCacheCostForImage(image);
         [self.memCache setObject:image forKey:key cost:cost];
@@ -246,7 +256,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
     if (!imageData || !key) {
         return;
     }
-    
+    // 是否在ioQueue中
     [self checkIfQueueIsIOQueue];
     
     if (![_fileManager fileExistsAtPath:_diskCachePath]) {
@@ -299,7 +309,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
 
     return diskImage;
 }
-
+// 获取缓存，第一步先去内存中查找，第二步去磁盘查找
 - (nullable UIImage *)imageFromCacheForKey:(nullable NSString *)key {
     // First check the in-memory cache...
     UIImage *image = [self imageFromMemoryCacheForKey:key];
@@ -372,6 +382,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
     }
 
     // First check the in-memory cache...
+    // 第一步：查询内存
     UIImage *image = [self imageFromMemoryCacheForKey:key];
     if (image) {
         NSData *diskData = nil;
@@ -392,6 +403,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
         }
 
         @autoreleasepool {
+            // 第二步： 查询磁盘
             NSData *diskData = [self diskImageDataBySearchingAllPathsForKey:key];
             UIImage *diskImage = [self diskImageForKey:key];
             if (diskImage && self.config.shouldCacheImagesInMemory) {
@@ -461,18 +473,23 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
 
 #pragma mark - Cache clean Ops
 
+// 清除内存缓存
 - (void)clearMemory {
     [self.memCache removeAllObjects];
 }
 
+// 清除磁盘
 - (void)clearDiskOnCompletion:(nullable SDWebImageNoParamsBlock)completion {
     dispatch_async(self.ioQueue, ^{
+        // 移除路径下，文件或者文件夹
         [_fileManager removeItemAtPath:self.diskCachePath error:nil];
+        // 路径下创建文件夹
         [_fileManager createDirectoryAtPath:self.diskCachePath
                 withIntermediateDirectories:YES
                                  attributes:nil
                                       error:NULL];
 
+        // 回调主线程
         if (completion) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 completion();
@@ -481,6 +498,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
     });
 }
 
+// 删除旧文件
 - (void)deleteOldFiles {
     [self deleteOldFilesWithCompletionBlock:nil];
 }
@@ -502,7 +520,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
 
         // Enumerate all of the files in the cache directory.  This loop has two purposes:
         //
-        //  1. Removing files that are older than the expiration date.
+        //  1. Removing files that are older than the expiration date. 移除过时文件
         //  2. Storing file attributes for the size-based cleanup pass.
         NSMutableArray<NSURL *> *urlsToDelete = [[NSMutableArray alloc] init];
         for (NSURL *fileURL in fileEnumerator) {

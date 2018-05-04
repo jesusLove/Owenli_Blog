@@ -51,12 +51,15 @@ static char TAG_ACTIVITY_SHOW;
     // valid key : UIImageView || UIButton, 区分是UIImageView还是UIButton
     NSString *validOperationKey = operationKey ?: NSStringFromClass([self class]);
     
-    // 保证没有正在异步下载的操作，避免发生冲突
+    // 保证没有正在异步下载的操作，避免发生冲突。
     [self sd_cancelImageLoadOperationWithKey:validOperationKey];
-    
+    /**
+     把UIImageView的加载图片url和他自身关联对象关联起来，方便取消操作。
+     这里的Key就是UIImageView的类名。
+     */
     objc_setAssociatedObject(self, &imageURLKey, url, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     
-    // 添加占位图
+    // 如果设置占位图，先显示占位图。
     if (!(options & SDWebImageDelayPlaceholder)) {
         
         if ([context valueForKey:SDWebImageInternalSetImageGroupKey]) {
@@ -71,6 +74,7 @@ static char TAG_ACTIVITY_SHOW;
     // url 存在
     if (url) {
         // check if activityView is enabled or not
+        // 添加菊花
         if ([self sd_showActivityIndicatorView]) {
             [self sd_addActivityIndicator];
         }
@@ -88,8 +92,10 @@ static char TAG_ACTIVITY_SHOW;
         id <SDWebImageOperation> operation = [manager loadImageWithURL:url options:options progress:progressBlock completed:^(UIImage *image, NSData *data, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
             
             __strong __typeof (wself) sself = wself;
+            // 移除菊花
             [sself sd_removeActivityIndicator];
             if (!sself) { return; }
+            // 不自动设置显示图片，让调用者处理图片的显示
             BOOL shouldCallCompletedBlock = finished || (options & SDWebImageAvoidAutoSetImage);
             BOOL shouldNotSetImage = ((image && (options & SDWebImageAvoidAutoSetImage)) ||
                                       (!image && !(options & SDWebImageDelayPlaceholder)));
@@ -114,11 +120,13 @@ static char TAG_ACTIVITY_SHOW;
             UIImage *targetImage = nil;
             NSData *targetData = nil;
             if (image) {
+                // 显示图片
                 // case 2a: we got an image and the SDWebImageAvoidAutoSetImage is not set
                 targetImage = image;
                 targetData = data;
             } else if (options & SDWebImageDelayPlaceholder) {
                 // case 2b: we got no image and the SDWebImageDelayPlaceholder flag is set
+                // 延迟显示占位图，在图片加载失败时显示。
                 targetImage = placeholder;
                 targetData = nil;
             }
@@ -191,6 +199,8 @@ static char TAG_ACTIVITY_SHOW;
 
 #pragma mark -
 #if SD_UIKIT
+
+// 通过关联对象实现菊花的添加
 - (UIActivityIndicatorView *)activityIndicator {
     return (UIActivityIndicatorView *)objc_getAssociatedObject(self, &TAG_ACTIVITY_INDICATOR);
 }
@@ -199,7 +209,7 @@ static char TAG_ACTIVITY_SHOW;
     objc_setAssociatedObject(self, &TAG_ACTIVITY_INDICATOR, activityIndicator, OBJC_ASSOCIATION_RETAIN);
 }
 #endif
-
+// 显示旋转菊花
 - (void)sd_setShowActivityIndicatorView:(BOOL)show {
     objc_setAssociatedObject(self, &TAG_ACTIVITY_SHOW, @(show), OBJC_ASSOCIATION_RETAIN);
 }
@@ -209,6 +219,7 @@ static char TAG_ACTIVITY_SHOW;
 }
 
 #if SD_UIKIT
+// 设置菊花样式
 - (void)sd_setIndicatorStyle:(UIActivityIndicatorViewStyle)style{
     objc_setAssociatedObject(self, &TAG_ACTIVITY_STYLE, [NSNumber numberWithInt:style], OBJC_ASSOCIATION_RETAIN);
 }
@@ -246,7 +257,7 @@ static char TAG_ACTIVITY_SHOW;
     });
 #endif
 }
-
+// 移除菊花
 - (void)sd_removeActivityIndicator {
 #if SD_UIKIT
     dispatch_main_async_safe(^{

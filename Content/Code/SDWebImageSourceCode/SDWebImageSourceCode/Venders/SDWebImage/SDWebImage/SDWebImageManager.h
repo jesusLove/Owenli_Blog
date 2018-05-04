@@ -160,8 +160,8 @@ SDWebImageManager *manager = [SDWebImageManager sharedManager];
 
 @property (weak, nonatomic, nullable) id <SDWebImageManagerDelegate> delegate;
 
-@property (strong, nonatomic, readonly, nullable) SDImageCache *imageCache;
-@property (strong, nonatomic, readonly, nullable) SDWebImageDownloader *imageDownloader;
+@property (strong, nonatomic, readonly, nullable) SDImageCache *imageCache; // 缓存
+@property (strong, nonatomic, readonly, nullable) SDWebImageDownloader *imageDownloader; // 下载
 
 /**
  * The cache filter is a block used each time SDWebImageManager need to convert an URL into a cache key. This can

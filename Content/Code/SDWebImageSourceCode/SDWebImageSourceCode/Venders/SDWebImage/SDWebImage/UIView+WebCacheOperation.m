@@ -34,6 +34,12 @@ typedef NSMapTable<NSString *, id<SDWebImageOperation>> SDOperationsDictionary;
     }
 }
 
+/**
+ 关联Operation对象与key对象
+
+ @param operation Operation对象
+ @param key key
+ */
 - (void)sd_setImageLoadOperation:(nullable id<SDWebImageOperation>)operation forKey:(nullable NSString *)key {
     if (key) {
         [self sd_cancelImageLoadOperationWithKey:key];
@@ -46,13 +52,21 @@ typedef NSMapTable<NSString *, id<SDWebImageOperation>> SDOperationsDictionary;
     }
 }
 
+/**
+ 取消当前key对应的所有实现
+
+ @param key key
+ */
 - (void)sd_cancelImageLoadOperationWithKey:(nullable NSString *)key {
     // Cancel in progress downloader from queue
+    // 获取当前View对应的所有的key
     SDOperationsDictionary *operationDictionary = [self sd_operationDictionary];
     id<SDWebImageOperation> operation;
     @synchronized (self) {
+        // 获取对应图片的Operation
         operation = [operationDictionary objectForKey:key];
     }
+    // 取消所有当前View对应的Operation
     if (operation) {
         if ([operation conformsToProtocol:@protocol(SDWebImageOperation)]){
             [operation cancel];

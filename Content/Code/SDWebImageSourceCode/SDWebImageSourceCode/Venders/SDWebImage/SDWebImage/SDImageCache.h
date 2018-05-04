@@ -10,25 +10,30 @@
 #import "SDWebImageCompat.h"
 #import "SDImageCacheConfig.h"
 
+// 缓存选项
 typedef NS_ENUM(NSInteger, SDImageCacheType) {
     /**
      * The image wasn't available the SDWebImage caches, but was downloaded from the web.
+     * 不适用SDWebImage缓存
      */
     SDImageCacheTypeNone,
     /**
      * The image was obtained from the disk cache.
+     * 缓存到磁盘
      */
     SDImageCacheTypeDisk,
     /**
      * The image was obtained from the memory cache.
+     * 缓存到内存
      */
     SDImageCacheTypeMemory
 };
 
+// 缓存查询完成回调
 typedef void(^SDCacheQueryCompletedBlock)(UIImage * _Nullable image, NSData * _Nullable data, SDImageCacheType cacheType);
-
+// 检测是否有缓存
 typedef void(^SDWebImageCheckCacheCompletionBlock)(BOOL isInCache);
-
+// 缓存大小
 typedef void(^SDWebImageCalculateSizeBlock)(NSUInteger fileCount, NSUInteger totalSize);
 
 
@@ -38,7 +43,7 @@ typedef void(^SDWebImageCalculateSizeBlock)(NSUInteger fileCount, NSUInteger tot
  */
 @interface SDImageCache : NSObject
 
-#pragma mark - Properties
+#pragma mark - Properties 属性
 
 /**
  *  Cache Config object - storing all kind of settings
@@ -55,7 +60,7 @@ typedef void(^SDWebImageCalculateSizeBlock)(NSUInteger fileCount, NSUInteger tot
  */
 @property (assign, nonatomic) NSUInteger maxMemoryCountLimit;
 
-#pragma mark - Singleton and initialization
+#pragma mark - Singleton and initialization 单例和初始化
 
 /**
  * Returns global shared cache instance
@@ -92,7 +97,7 @@ typedef void(^SDWebImageCalculateSizeBlock)(NSUInteger fileCount, NSUInteger tot
  */
 - (void)addReadOnlyCachePath:(nonnull NSString *)path;
 
-#pragma mark - Store Ops
+#pragma mark - Store Ops，存储操作
 
 /**
  * Asynchronously store an image into memory and disk cache at the given key.
@@ -145,7 +150,7 @@ typedef void(^SDWebImageCalculateSizeBlock)(NSUInteger fileCount, NSUInteger tot
  */
 - (void)storeImageDataToDisk:(nullable NSData *)imageData forKey:(nullable NSString *)key;
 
-#pragma mark - Query and Retrieve Ops
+#pragma mark - Query and Retrieve Ops 查询缓存操作
 
 /**
  *  Async check if image exists in disk cache already (does not load the image)
@@ -187,7 +192,7 @@ typedef void(^SDWebImageCalculateSizeBlock)(NSUInteger fileCount, NSUInteger tot
  */
 - (nullable UIImage *)imageFromCacheForKey:(nullable NSString *)key;
 
-#pragma mark - Remove Ops
+#pragma mark - Remove Ops 移除缓存操作
 
 /**
  * Remove the image from memory and disk cache asynchronously
@@ -206,10 +211,11 @@ typedef void(^SDWebImageCalculateSizeBlock)(NSUInteger fileCount, NSUInteger tot
  */
 - (void)removeImageForKey:(nullable NSString *)key fromDisk:(BOOL)fromDisk withCompletion:(nullable SDWebImageNoParamsBlock)completion;
 
-#pragma mark - Cache clean Ops
+#pragma mark - Cache clean Ops 清除缓存操作
 
 /**
  * Clear all memory cached images
+ * 清除images所有内存cache
  */
 - (void)clearMemory;
 
@@ -225,7 +231,7 @@ typedef void(^SDWebImageCalculateSizeBlock)(NSUInteger fileCount, NSUInteger tot
  */
 - (void)deleteOldFilesWithCompletionBlock:(nullable SDWebImageNoParamsBlock)completionBlock;
 
-#pragma mark - Cache Info
+#pragma mark - Cache Info  缓存信息
 
 /**
  * Get the size used by the disk cache
@@ -242,7 +248,7 @@ typedef void(^SDWebImageCalculateSizeBlock)(NSUInteger fileCount, NSUInteger tot
  */
 - (void)calculateSizeWithCompletionBlock:(nullable SDWebImageCalculateSizeBlock)completionBlock;
 
-#pragma mark - Cache Paths
+#pragma mark - Cache Paths 缓存路径
 
 /**
  *  Get the cache path for a certain key (needs the cache path root folder)

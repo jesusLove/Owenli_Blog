@@ -51,6 +51,18 @@ typedef void(^SDSetImageBlock)(UIImage * _Nullable image, NSData * _Nullable ima
  *                       indicating if the image was retrieved from the local cache or from the network.
  *                       The fourth parameter is the original image url.
  */
+
+/**
+ 所有UIVIew及其子类都通过这个方法来加载图片
+
+ @param url url地址
+ @param placeholder 占位图
+ @param options 加载项
+ @param operationKey key
+ @param setImageBlock block
+ @param progressBlock 进度block
+ @param completedBlock 回调block
+ */
 - (void)sd_internalSetImageWithURL:(nullable NSURL *)url
                   placeholderImage:(nullable UIImage *)placeholder
                            options:(SDWebImageOptions)options
