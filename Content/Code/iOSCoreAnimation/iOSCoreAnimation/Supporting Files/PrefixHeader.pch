@@ -1,0 +1,21 @@
+//
+//  PrefixHeader.pch
+//  iOSCoreAnimation
+//
+//  Created by lqq on 2018/5/9.
+//  Copyright © 2018年 Elink. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+
+#define RADIANS_TO_DEGREES(x) ((x)/M_PI * 180.0)
+#define KSCREENWIDTH [UIScreen mainScreen].bounds.size.width
+#define KSCREENHEIGHT [UIScreen mainScreen].bounds.size.height
+
+
+#endif /* PrefixHeader_pch */
