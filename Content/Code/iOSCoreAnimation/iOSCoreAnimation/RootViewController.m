@@ -65,5 +65,8 @@
     [self.navigationController pushViewController:vc animated:YES];
 
 }
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
 
 @end
