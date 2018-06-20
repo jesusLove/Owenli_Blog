@@ -8,6 +8,7 @@
 #import "MASConstraint.h"
 #import "MASConstraint+Private.h"
 
+// 方法未实现是抛出异常，提示子类重写
 #define MASMethodNotImplemented() \
     @throw [NSException exceptionWithName:NSInternalInconsistencyException \
                                    reason:[NSString stringWithFormat:@"You must override %@ in a subclass.", NSStringFromSelector(_cmd)] \

@@ -141,11 +141,11 @@
 			isa = PBXGroup;
 			children = (
 				49A3187F20BD3BAE008A12D1 /* libs */,
-				49A3187E20BD3B99008A12D1 /* Supporting Files */,
 				49A3184F20BD3B87008A12D1 /* ViewController.h */,
 				49A3185020BD3B87008A12D1 /* ViewController.m */,
 				49A3185220BD3B87008A12D1 /* Main.storyboard */,
 				49A3185A20BD3B88008A12D1 /* Info.plist */,
+				49A3187E20BD3B99008A12D1 /* Supporting Files */,
 			);
 			path = MasonrySourceCode;
 			sourceTree = "<group>";
