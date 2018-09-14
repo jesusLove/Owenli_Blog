@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "ReverseList.h"
 #import "MergeSortedArray.h"
+#import "HashFind.h"
+
 void char_reverseTest() {
     char ch[] = "Hello, world";
     char_reverse(ch);
@@ -32,6 +34,11 @@ void array_mergeSortedTest() {
         printf("%d ", result[i]);
     }
 }
+void hash_findFirstCharTest() {
+    char *cha = "gabaccdeff";
+    char fc = findFirstChar(cha);
+    printf("this char is %c \n", fc);
+}
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -39,8 +46,10 @@ int main(int argc, const char * argv[]) {
 //        char_reverseTest();
         // 链表反转
 //        list_reverseTest();
-        
-        array_mergeSortedTest();
+        // 合并排序数组
+//        array_mergeSortedTest();
+        // 查找第一个只出现一次字符
+        hash_findFirstCharTest();
     }
     return 0;
 }
