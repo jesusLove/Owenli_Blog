@@ -10,6 +10,7 @@
 #import "ReverseList.h"
 #import "MergeSortedArray.h"
 #import "HashFind.h"
+#import "FindMedian.h"
 
 void char_reverseTest() {
     char ch[] = "Hello, world";
@@ -39,6 +40,13 @@ void hash_findFirstCharTest() {
     char fc = findFirstChar(cha);
     printf("this char is %c \n", fc);
 }
+void findMedianTest() {
+    int list[9] = {12,3,10,8,6,7,11,13,9};
+    // 3 6 7 8 9 10 11 12 13
+    //         ^
+    int median = findMedian(list, 9);
+    printf("the median is %d \n", median);
+}
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -49,7 +57,9 @@ int main(int argc, const char * argv[]) {
         // 合并排序数组
 //        array_mergeSortedTest();
         // 查找第一个只出现一次字符
-        hash_findFirstCharTest();
+//        hash_findFirstCharTest();
+        // 查找中位数
+        findMedianTest();
     }
     return 0;
 }

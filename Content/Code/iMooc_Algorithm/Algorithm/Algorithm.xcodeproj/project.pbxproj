@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		491005F6214B40FE00B6C279 /* HashFind.m in Sources */ = {isa = PBXBuildFile; fileRef = 491005F5214B40FE00B6C279 /* HashFind.m */; };
+		491005F9214B45A800B6C279 /* FindCommonSuperView.m in Sources */ = {isa = PBXBuildFile; fileRef = 491005F8214B45A800B6C279 /* FindCommonSuperView.m */; };
+		491005FC214B502E00B6C279 /* FindMedian.m in Sources */ = {isa = PBXBuildFile; fileRef = 491005FB214B502E00B6C279 /* FindMedian.m */; };
 		497394B1214A99B60060863D /* MergeSortedList.m in Sources */ = {isa = PBXBuildFile; fileRef = 497394B0214A99B60060863D /* MergeSortedList.m */; };
 		49B50BA22149F4930020ACE7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B50BA12149F4930020ACE7 /* main.m */; };
 		49B50BAA2149F5FC0020ACE7 /* CharReverse.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B50BA92149F5FC0020ACE7 /* CharReverse.m */; };
@@ -30,6 +32,10 @@
 /* Begin PBXFileReference section */
 		491005F4214B40FE00B6C279 /* HashFind.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HashFind.h; sourceTree = "<group>"; };
 		491005F5214B40FE00B6C279 /* HashFind.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HashFind.m; sourceTree = "<group>"; };
+		491005F7214B45A800B6C279 /* FindCommonSuperView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FindCommonSuperView.h; sourceTree = "<group>"; };
+		491005F8214B45A800B6C279 /* FindCommonSuperView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindCommonSuperView.m; sourceTree = "<group>"; };
+		491005FA214B502E00B6C279 /* FindMedian.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FindMedian.h; sourceTree = "<group>"; };
+		491005FB214B502E00B6C279 /* FindMedian.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindMedian.m; sourceTree = "<group>"; };
 		497394AF214A99B60060863D /* MergeSortedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MergeSortedList.h; sourceTree = "<group>"; };
 		497394B0214A99B60060863D /* MergeSortedList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MergeSortedList.m; sourceTree = "<group>"; };
 		497394B5214A9B5C0060863D /* Node.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
@@ -85,6 +91,10 @@
 				497394B5214A9B5C0060863D /* Node.h */,
 				491005F4214B40FE00B6C279 /* HashFind.h */,
 				491005F5214B40FE00B6C279 /* HashFind.m */,
+				491005F7214B45A800B6C279 /* FindCommonSuperView.h */,
+				491005F8214B45A800B6C279 /* FindCommonSuperView.m */,
+				491005FA214B502E00B6C279 /* FindMedian.h */,
+				491005FB214B502E00B6C279 /* FindMedian.m */,
 			);
 			path = Algorithm;
 			sourceTree = "<group>";
@@ -146,10 +156,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				491005F6214B40FE00B6C279 /* HashFind.m in Sources */,
+				491005F9214B45A800B6C279 /* FindCommonSuperView.m in Sources */,
 				49B50BAA2149F5FC0020ACE7 /* CharReverse.m in Sources */,
 				49B50BB0214A01E70020ACE7 /* MergeSortedArray.m in Sources */,
 				497394B1214A99B60060863D /* MergeSortedList.m in Sources */,
 				49B50BA22149F4930020ACE7 /* main.m in Sources */,
+				491005FC214B502E00B6C279 /* FindMedian.m in Sources */,
 				49B50BAD2149FAC10020ACE7 /* ReverseList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
