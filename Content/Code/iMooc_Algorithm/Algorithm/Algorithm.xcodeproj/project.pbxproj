@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		497394B1214A99B60060863D /* MergeSortedList.m in Sources */ = {isa = PBXBuildFile; fileRef = 497394B0214A99B60060863D /* MergeSortedList.m */; };
 		49B50BA22149F4930020ACE7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B50BA12149F4930020ACE7 /* main.m */; };
 		49B50BAA2149F5FC0020ACE7 /* CharReverse.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B50BA92149F5FC0020ACE7 /* CharReverse.m */; };
 		49B50BAD2149FAC10020ACE7 /* ReverseList.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B50BAC2149FAC10020ACE7 /* ReverseList.m */; };
@@ -26,6 +27,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		497394AF214A99B60060863D /* MergeSortedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MergeSortedList.h; sourceTree = "<group>"; };
+		497394B0214A99B60060863D /* MergeSortedList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MergeSortedList.m; sourceTree = "<group>"; };
+		497394B5214A9B5C0060863D /* Node.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
 		49B50B9E2149F4930020ACE7 /* Algorithm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Algorithm; sourceTree = BUILT_PRODUCTS_DIR; };
 		49B50BA12149F4930020ACE7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		49B50BA82149F5FC0020ACE7 /* CharReverse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CharReverse.h; sourceTree = "<group>"; };
@@ -73,6 +77,9 @@
 				49B50BAC2149FAC10020ACE7 /* ReverseList.m */,
 				49B50BAE214A01E70020ACE7 /* MergeSortedArray.h */,
 				49B50BAF214A01E70020ACE7 /* MergeSortedArray.m */,
+				497394AF214A99B60060863D /* MergeSortedList.h */,
+				497394B0214A99B60060863D /* MergeSortedList.m */,
+				497394B5214A9B5C0060863D /* Node.h */,
 			);
 			path = Algorithm;
 			sourceTree = "<group>";
@@ -135,6 +142,7 @@
 			files = (
 				49B50BAA2149F5FC0020ACE7 /* CharReverse.m in Sources */,
 				49B50BB0214A01E70020ACE7 /* MergeSortedArray.m in Sources */,
+				497394B1214A99B60060863D /* MergeSortedList.m in Sources */,
 				49B50BA22149F4930020ACE7 /* main.m in Sources */,
 				49B50BAD2149FAC10020ACE7 /* ReverseList.m in Sources */,
 			);

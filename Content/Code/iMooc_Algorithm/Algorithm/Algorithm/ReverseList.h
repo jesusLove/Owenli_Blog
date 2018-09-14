@@ -7,10 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-struct Node {
-    int data;
-    struct Node *next;
-};
+#import "Node.h"
+
 @interface ReverseList : NSObject
 
 // 链表反转
