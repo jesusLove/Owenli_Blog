@@ -13,7 +13,7 @@
         <!--View Controller-->
         <scene sceneID="r2e-kI-3cD">
             <objects>
-                <viewController id="z3h-ZM-4hX" sceneMemberID="viewController">
+                <viewController id="z3h-ZM-4hX" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="b4J-AW-zKR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -29,11 +29,24 @@
                                     <segue destination="BYZ-38-t0r" kind="show" id="Xt4-0O-rVg"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DDP-yn-4v5">
+                                <rect key="frame" x="136" y="389" width="103" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="103" id="Qtp-Nj-HAb"/>
+                                    <constraint firstAttribute="height" constant="30" id="wbs-LB-BbJ"/>
+                                </constraints>
+                                <state key="normal" title="测试封装"/>
+                                <connections>
+                                    <segue destination="7Ek-77-s9k" kind="show" id="lXH-BP-EEC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="DDP-yn-4v5" firstAttribute="top" secondItem="4zj-xW-CRM" secondAttribute="bottom" constant="41" id="9fh-rn-XLa"/>
                             <constraint firstItem="4zj-xW-CRM" firstAttribute="centerX" secondItem="b4J-AW-zKR" secondAttribute="centerX" id="ZgY-LA-gXd"/>
                             <constraint firstItem="4zj-xW-CRM" firstAttribute="centerY" secondItem="b4J-AW-zKR" secondAttribute="centerY" id="mTh-Iq-I6x"/>
+                            <constraint firstItem="DDP-yn-4v5" firstAttribute="centerX" secondItem="b4J-AW-zKR" secondAttribute="centerX" id="shc-df-m5b"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Vgk-qI-ywz"/>
                     </view>
@@ -41,12 +54,44 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zYa-ob-P0z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="866" y="108"/>
+            <point key="canvasLocation" x="861.60000000000002" y="386.35682158920542"/>
         </scene>
-        <!--View Controller-->
+        <!--Permanent View Controller-->
+        <scene sceneID="HbT-Ps-ld7">
+            <objects>
+                <viewController id="7Ek-77-s9k" customClass="LEPermanentViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Uov-HL-Bbj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jkV-NX-Dvj">
+                                <rect key="frame" x="122" y="318" width="131" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="131" id="SMA-Tj-Vqv"/>
+                                    <constraint firstAttribute="height" constant="30" id="rvN-Mv-3h2"/>
+                                </constraints>
+                                <state key="normal" title="停止"/>
+                                <connections>
+                                    <action selector="stopThread:" destination="7Ek-77-s9k" eventType="touchUpInside" id="XBe-Ym-m2A"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jkV-NX-Dvj" firstAttribute="centerY" secondItem="Uov-HL-Bbj" secondAttribute="centerY" id="7B8-rs-cAd"/>
+                            <constraint firstItem="jkV-NX-Dvj" firstAttribute="centerX" secondItem="Uov-HL-Bbj" secondAttribute="centerX" id="OCW-QZ-f8l"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="nZC-5d-gII"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FMH-8d-sDw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1685.5999999999999" y="767.76611694152928"/>
+        </scene>
+        <!--Test View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LETestViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

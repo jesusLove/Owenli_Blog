@@ -8,20 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		494950A52153335E00B9546F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 494950A42153335E00B9546F /* AppDelegate.m */; };
-		494950A82153335E00B9546F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 494950A72153335E00B9546F /* ViewController.m */; };
+		494950A82153335E00B9546F /* LETestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 494950A72153335E00B9546F /* LETestViewController.m */; };
 		494950AB2153335E00B9546F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 494950A92153335E00B9546F /* Main.storyboard */; };
 		494950AD2153336100B9546F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 494950AC2153336100B9546F /* Assets.xcassets */; };
 		494950B02153336100B9546F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 494950AE2153336100B9546F /* LaunchScreen.storyboard */; };
 		494950B32153336100B9546F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 494950B22153336100B9546F /* main.m */; };
 		494950BB2153345500B9546F /* LEThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 494950BA2153345500B9546F /* LEThread.m */; };
+		494950C22153414600B9546F /* LEPermanentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 494950C12153414600B9546F /* LEPermanentViewController.m */; };
+		494950C52153479B00B9546F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 494950C42153479B00B9546F /* ViewController.m */; };
+		494950C92153482300B9546F /* LEPermanentThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 494950C82153482300B9546F /* LEPermanentThread.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		494950A02153335E00B9546F /* XMG_RunLoop_线程保活.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "XMG_RunLoop_线程保活.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		494950A32153335E00B9546F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		494950A42153335E00B9546F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		494950A62153335E00B9546F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		494950A72153335E00B9546F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		494950A62153335E00B9546F /* LETestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LETestViewController.h; sourceTree = "<group>"; };
+		494950A72153335E00B9546F /* LETestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LETestViewController.m; sourceTree = "<group>"; };
 		494950AA2153335E00B9546F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		494950AC2153336100B9546F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		494950AF2153336100B9546F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -29,6 +32,12 @@
 		494950B22153336100B9546F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		494950B92153345500B9546F /* LEThread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LEThread.h; sourceTree = "<group>"; };
 		494950BA2153345500B9546F /* LEThread.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LEThread.m; sourceTree = "<group>"; };
+		494950C02153414600B9546F /* LEPermanentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LEPermanentViewController.h; sourceTree = "<group>"; };
+		494950C12153414600B9546F /* LEPermanentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LEPermanentViewController.m; sourceTree = "<group>"; };
+		494950C32153479B00B9546F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		494950C42153479B00B9546F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		494950C72153482300B9546F /* LEPermanentThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEPermanentThread.h; sourceTree = "<group>"; };
+		494950C82153482300B9546F /* LEPermanentThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEPermanentThread.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,10 +70,15 @@
 		494950A22153335E00B9546F /* XMG_RunLoop_线程保活 */ = {
 			isa = PBXGroup;
 			children = (
+				494950C62153482300B9546F /* RunLoopTool */,
 				494950A32153335E00B9546F /* AppDelegate.h */,
 				494950A42153335E00B9546F /* AppDelegate.m */,
-				494950A62153335E00B9546F /* ViewController.h */,
-				494950A72153335E00B9546F /* ViewController.m */,
+				494950C32153479B00B9546F /* ViewController.h */,
+				494950C42153479B00B9546F /* ViewController.m */,
+				494950A62153335E00B9546F /* LETestViewController.h */,
+				494950A72153335E00B9546F /* LETestViewController.m */,
+				494950C02153414600B9546F /* LEPermanentViewController.h */,
+				494950C12153414600B9546F /* LEPermanentViewController.m */,
 				494950A92153335E00B9546F /* Main.storyboard */,
 				494950AC2153336100B9546F /* Assets.xcassets */,
 				494950AE2153336100B9546F /* LaunchScreen.storyboard */,
@@ -74,6 +88,15 @@
 				494950BA2153345500B9546F /* LEThread.m */,
 			);
 			path = "XMG_RunLoop_线程保活";
+			sourceTree = "<group>";
+		};
+		494950C62153482300B9546F /* RunLoopTool */ = {
+			isa = PBXGroup;
+			children = (
+				494950C72153482300B9546F /* LEPermanentThread.h */,
+				494950C82153482300B9546F /* LEPermanentThread.m */,
+			);
+			path = RunLoopTool;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,10 +169,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				494950A82153335E00B9546F /* ViewController.m in Sources */,
+				494950C92153482300B9546F /* LEPermanentThread.m in Sources */,
+				494950C52153479B00B9546F /* ViewController.m in Sources */,
+				494950A82153335E00B9546F /* LETestViewController.m in Sources */,
 				494950B32153336100B9546F /* main.m in Sources */,
 				494950BB2153345500B9546F /* LEThread.m in Sources */,
 				494950A52153335E00B9546F /* AppDelegate.m in Sources */,
+				494950C22153414600B9546F /* LEPermanentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
