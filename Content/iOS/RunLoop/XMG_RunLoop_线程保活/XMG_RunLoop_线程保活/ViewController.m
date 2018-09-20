@@ -1,0 +1,62 @@
+//
+//  ViewController.m
+//  XMG_RunLoop_线程保活
+//
+//  Created by lqq on 2018/9/20.
+//  Copyright © 2018年 LQQ. All rights reserved.
+//
+
+#import "ViewController.h"
+#import "LEThread.h"
+
+@interface ViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *runBtn;
+@property (nonatomic, strong) LEThread  *thread;
+@end
+
+BOOL isKeepRunLoop = YES; //全局变量
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.thread = [[LEThread alloc] initWithBlock:^{
+        [[NSRunLoop currentRunLoop] addPort:[[NSPort alloc] init] forMode:NSDefaultRunLoopMode];
+        while (isKeepRunLoop && [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
+        NSLog(@"%s --- end -----", __func__);
+    }];
+    [self.thread start];
+    NSLog(@"创建子线程成功");
+}
+- (void)stopThread {
+    isKeepRunLoop = NO;
+    CFRunLoopStop(CFRunLoopGetCurrent());
+    NSLog(@"停止RunLoop: %s", __func__);
+    dispatch_async(dispatch_get_main_queue(), ^{
+       self.runBtn.enabled = NO;
+    });
+}
+
+// 运行测试任务
+- (IBAction)runTest:(UIButton *)sender {
+    [self performSelector:@selector(test) onThread:self.thread withObject:nil waitUntilDone:YES];
+    
+}
+
+- (void)test {
+    NSLog(@"执行任务：%s %@", __func__, [NSThread currentThread]);
+}
+
+
+// 点击按键停止子线程
+- (IBAction)stopBtn:(UIButton *)sender {
+    [self performSelector:@selector(stopThread) onThread:self.thread withObject:nil waitUntilDone:YES];
+}
+// 控制器销毁
+- (void)dealloc {
+    NSLog(@"控制器销毁了：%s", __func__);
+    // 停止RunLoop循环, 最后
+    [self performSelector:@selector(stopThread) onThread:self.thread withObject:nil waitUntilDone:YES];
+}
+@end
