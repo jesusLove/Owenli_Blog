@@ -30,18 +30,19 @@ BOOL isKeepRunLoop = YES; //全局变量
     NSLog(@"创建子线程成功");
 }
 - (void)stopThread {
+
     isKeepRunLoop = NO;
     CFRunLoopStop(CFRunLoopGetCurrent());
     NSLog(@"停止RunLoop: %s", __func__);
-    dispatch_async(dispatch_get_main_queue(), ^{
-       self.runBtn.enabled = NO;
-    });
+    self.thread = nil;
 }
 
 // 运行测试任务
 - (IBAction)runTest:(UIButton *)sender {
+    if (!self.thread) {
+        return;
+    };
     [self performSelector:@selector(test) onThread:self.thread withObject:nil waitUntilDone:YES];
-    
 }
 
 - (void)test {
@@ -51,6 +52,9 @@ BOOL isKeepRunLoop = YES; //全局变量
 
 // 点击按键停止子线程
 - (IBAction)stopBtn:(UIButton *)sender {
+    if (!self.thread) {
+        return;
+    }
     [self performSelector:@selector(stopThread) onThread:self.thread withObject:nil waitUntilDone:YES];
 }
 // 控制器销毁
