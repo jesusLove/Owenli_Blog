@@ -13,6 +13,8 @@
 		492661972154CBDE003C6710 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 492661962154CBDE003C6710 /* Assets.xcassets */; };
 		4926619A2154CBDE003C6710 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 492661982154CBDE003C6710 /* LaunchScreen.storyboard */; };
 		4926619D2154CBDE003C6710 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4926619C2154CBDE003C6710 /* main.m */; };
+		492661A52154D810003C6710 /* LEBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 492661A42154D810003C6710 /* LEBase.m */; };
+		492661AC2154D9FD003C6710 /* LEOSSpinLock.m in Sources */ = {isa = PBXBuildFile; fileRef = 492661AB2154D9FD003C6710 /* LEOSSpinLock.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,10 @@
 		492661992154CBDE003C6710 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4926619B2154CBDE003C6710 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4926619C2154CBDE003C6710 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		492661A32154D810003C6710 /* LEBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LEBase.h; sourceTree = "<group>"; };
+		492661A42154D810003C6710 /* LEBase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LEBase.m; sourceTree = "<group>"; };
+		492661AA2154D9FD003C6710 /* LEOSSpinLock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LEOSSpinLock.h; sourceTree = "<group>"; };
+		492661AB2154D9FD003C6710 /* LEOSSpinLock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LEOSSpinLock.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,8 +73,20 @@
 				492661982154CBDE003C6710 /* LaunchScreen.storyboard */,
 				4926619B2154CBDE003C6710 /* Info.plist */,
 				4926619C2154CBDE003C6710 /* main.m */,
+				492661A62154D983003C6710 /* Lock */,
 			);
 			path = "XMG_GCD_线程同步";
+			sourceTree = "<group>";
+		};
+		492661A62154D983003C6710 /* Lock */ = {
+			isa = PBXGroup;
+			children = (
+				492661A32154D810003C6710 /* LEBase.h */,
+				492661A42154D810003C6710 /* LEBase.m */,
+				492661AA2154D9FD003C6710 /* LEOSSpinLock.h */,
+				492661AB2154D9FD003C6710 /* LEOSSpinLock.m */,
+			);
+			path = Lock;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,7 +161,9 @@
 			files = (
 				492661922154CBDD003C6710 /* ViewController.m in Sources */,
 				4926619D2154CBDE003C6710 /* main.m in Sources */,
+				492661AC2154D9FD003C6710 /* LEOSSpinLock.m in Sources */,
 				4926618F2154CBDD003C6710 /* AppDelegate.m in Sources */,
+				492661A52154D810003C6710 /* LEBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
