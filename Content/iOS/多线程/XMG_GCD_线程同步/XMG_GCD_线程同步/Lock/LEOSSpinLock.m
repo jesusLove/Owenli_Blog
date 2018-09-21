@@ -22,6 +22,7 @@
     return self;
 }
 #pragma mark - 重写父类的方法
+// 下面两个方法需要使用同一把锁
 - (void)__saveMoney {
     OSSpinLockLock(&_lock1);
     [super __saveMoney];
@@ -32,6 +33,7 @@
     [super __takeMoney];
     OSSpinLockUnlock(&_lock1);
 }
+//
 - (void)__sellTicket {
     static OSSpinLock lock2 = OS_SPINLOCK_INIT;
     OSSpinLockLock(&lock2);
