@@ -22,7 +22,6 @@ typedef void (^LEPermanentThreadTask)(void);
  */
 - (void)stop;
 
-
 /**
  执行一个任务
  */
