@@ -15,7 +15,7 @@
 @implementation LEBase
 
 #pragma mark - 线程同步方案
-
+- (void)otherTest{}
 // OSSpinLock
 
 

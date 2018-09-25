@@ -15,6 +15,11 @@
 		4926619D2154CBDE003C6710 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4926619C2154CBDE003C6710 /* main.m */; };
 		492661A52154D810003C6710 /* LEBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 492661A42154D810003C6710 /* LEBase.m */; };
 		492661AC2154D9FD003C6710 /* LEOSSpinLock.m in Sources */ = {isa = PBXBuildFile; fileRef = 492661AB2154D9FD003C6710 /* LEOSSpinLock.m */; };
+		493033E7215A092700D1843B /* LEOSUnfairLock.m in Sources */ = {isa = PBXBuildFile; fileRef = 493033E6215A092700D1843B /* LEOSUnfairLock.m */; };
+		493033EA215A0F8D00D1843B /* LEMutexLock.m in Sources */ = {isa = PBXBuildFile; fileRef = 493033E9215A0F8D00D1843B /* LEMutexLock.m */; };
+		493033ED215A165700D1843B /* LEMutexLockRecursive.m in Sources */ = {isa = PBXBuildFile; fileRef = 493033EC215A165700D1843B /* LEMutexLockRecursive.m */; };
+		493033F0215A26E200D1843B /* LEMutexLockCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 493033EF215A26E200D1843B /* LEMutexLockCondition.m */; };
+		493033F3215A2DB600D1843B /* LENSLock.m in Sources */ = {isa = PBXBuildFile; fileRef = 493033F2215A2DB600D1843B /* LENSLock.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +37,16 @@
 		492661A42154D810003C6710 /* LEBase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LEBase.m; sourceTree = "<group>"; };
 		492661AA2154D9FD003C6710 /* LEOSSpinLock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LEOSSpinLock.h; sourceTree = "<group>"; };
 		492661AB2154D9FD003C6710 /* LEOSSpinLock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LEOSSpinLock.m; sourceTree = "<group>"; };
+		493033E5215A092700D1843B /* LEOSUnfairLock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LEOSUnfairLock.h; sourceTree = "<group>"; };
+		493033E6215A092700D1843B /* LEOSUnfairLock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LEOSUnfairLock.m; sourceTree = "<group>"; };
+		493033E8215A0F8D00D1843B /* LEMutexLock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LEMutexLock.h; sourceTree = "<group>"; };
+		493033E9215A0F8D00D1843B /* LEMutexLock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LEMutexLock.m; sourceTree = "<group>"; };
+		493033EB215A165700D1843B /* LEMutexLockRecursive.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LEMutexLockRecursive.h; sourceTree = "<group>"; };
+		493033EC215A165700D1843B /* LEMutexLockRecursive.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LEMutexLockRecursive.m; sourceTree = "<group>"; };
+		493033EE215A26E200D1843B /* LEMutexLockCondition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LEMutexLockCondition.h; sourceTree = "<group>"; };
+		493033EF215A26E200D1843B /* LEMutexLockCondition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LEMutexLockCondition.m; sourceTree = "<group>"; };
+		493033F1215A2DB600D1843B /* LENSLock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LENSLock.h; sourceTree = "<group>"; };
+		493033F2215A2DB600D1843B /* LENSLock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LENSLock.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +100,16 @@
 				492661A42154D810003C6710 /* LEBase.m */,
 				492661AA2154D9FD003C6710 /* LEOSSpinLock.h */,
 				492661AB2154D9FD003C6710 /* LEOSSpinLock.m */,
+				493033E5215A092700D1843B /* LEOSUnfairLock.h */,
+				493033E6215A092700D1843B /* LEOSUnfairLock.m */,
+				493033E8215A0F8D00D1843B /* LEMutexLock.h */,
+				493033E9215A0F8D00D1843B /* LEMutexLock.m */,
+				493033EB215A165700D1843B /* LEMutexLockRecursive.h */,
+				493033EC215A165700D1843B /* LEMutexLockRecursive.m */,
+				493033EE215A26E200D1843B /* LEMutexLockCondition.h */,
+				493033EF215A26E200D1843B /* LEMutexLockCondition.m */,
+				493033F1215A2DB600D1843B /* LENSLock.h */,
+				493033F2215A2DB600D1843B /* LENSLock.m */,
 			);
 			path = Lock;
 			sourceTree = "<group>";
@@ -159,10 +184,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				493033F3215A2DB600D1843B /* LENSLock.m in Sources */,
 				492661922154CBDD003C6710 /* ViewController.m in Sources */,
+				493033F0215A26E200D1843B /* LEMutexLockCondition.m in Sources */,
+				493033EA215A0F8D00D1843B /* LEMutexLock.m in Sources */,
 				4926619D2154CBDE003C6710 /* main.m in Sources */,
 				492661AC2154D9FD003C6710 /* LEOSSpinLock.m in Sources */,
 				4926618F2154CBDD003C6710 /* AppDelegate.m in Sources */,
+				493033E7215A092700D1843B /* LEOSUnfairLock.m in Sources */,
+				493033ED215A165700D1843B /* LEMutexLockRecursive.m in Sources */,
 				492661A52154D810003C6710 /* LEBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

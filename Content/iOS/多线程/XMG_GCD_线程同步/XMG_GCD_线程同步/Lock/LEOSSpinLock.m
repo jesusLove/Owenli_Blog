@@ -24,6 +24,7 @@
 #pragma mark - 重写父类的方法
 // 下面两个方法需要使用同一把锁
 - (void)__saveMoney {
+    
     OSSpinLockLock(&_lock1);
     [super __saveMoney];
     OSSpinLockUnlock(&_lock1);
