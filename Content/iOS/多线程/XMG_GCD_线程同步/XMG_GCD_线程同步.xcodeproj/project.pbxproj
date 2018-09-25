@@ -21,6 +21,7 @@
 		493033F0215A26E200D1843B /* LEMutexLockCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 493033EF215A26E200D1843B /* LEMutexLockCondition.m */; };
 		493033F3215A2DB600D1843B /* LENSLock.m in Sources */ = {isa = PBXBuildFile; fileRef = 493033F2215A2DB600D1843B /* LENSLock.m */; };
 		493033F6215A311F00D1843B /* LENSCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 493033F5215A311F00D1843B /* LENSCondition.m */; };
+		493033F9215A33DA00D1843B /* LEAtomic.m in Sources */ = {isa = PBXBuildFile; fileRef = 493033F8215A33DA00D1843B /* LEAtomic.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,8 @@
 		493033F2215A2DB600D1843B /* LENSLock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LENSLock.m; sourceTree = "<group>"; };
 		493033F4215A311F00D1843B /* LENSCondition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LENSCondition.h; sourceTree = "<group>"; };
 		493033F5215A311F00D1843B /* LENSCondition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LENSCondition.m; sourceTree = "<group>"; };
+		493033F7215A33DA00D1843B /* LEAtomic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LEAtomic.h; sourceTree = "<group>"; };
+		493033F8215A33DA00D1843B /* LEAtomic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LEAtomic.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +118,8 @@
 				493033F2215A2DB600D1843B /* LENSLock.m */,
 				493033F4215A311F00D1843B /* LENSCondition.h */,
 				493033F5215A311F00D1843B /* LENSCondition.m */,
+				493033F7215A33DA00D1843B /* LEAtomic.h */,
+				493033F8215A33DA00D1843B /* LEAtomic.m */,
 			);
 			path = Lock;
 			sourceTree = "<group>";
@@ -192,6 +197,7 @@
 				493033F3215A2DB600D1843B /* LENSLock.m in Sources */,
 				492661922154CBDD003C6710 /* ViewController.m in Sources */,
 				493033F0215A26E200D1843B /* LEMutexLockCondition.m in Sources */,
+				493033F9215A33DA00D1843B /* LEAtomic.m in Sources */,
 				493033EA215A0F8D00D1843B /* LEMutexLock.m in Sources */,
 				4926619D2154CBDE003C6710 /* main.m in Sources */,
 				492661AC2154D9FD003C6710 /* LEOSSpinLock.m in Sources */,
