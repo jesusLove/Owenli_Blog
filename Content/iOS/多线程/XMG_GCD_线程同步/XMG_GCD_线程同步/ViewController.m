@@ -14,6 +14,8 @@
 #import "LEMutexLockCondition.h"
 #import "LENSLock.h"
 
+#import "LENSCondition.h"
+
 @interface ViewController ()
 @end
 
@@ -50,9 +52,14 @@
     
     
     // NSLock验证
-    LENSLock *lock = [[LENSLock alloc] init];
-    [lock sellTest];
-    [lock moneyTest];
+//    LENSLock *lock = [[LENSLock alloc] init];
+//    [lock sellTest];
+//    [lock moneyTest];
+    
+    // NSCondition验证
+    LENSCondition *lock = [[LENSCondition alloc] init];
+    [lock otherTest];
+    
 }
 
 

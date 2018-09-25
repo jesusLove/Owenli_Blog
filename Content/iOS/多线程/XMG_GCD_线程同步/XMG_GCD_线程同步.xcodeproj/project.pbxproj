@@ -20,6 +20,7 @@
 		493033ED215A165700D1843B /* LEMutexLockRecursive.m in Sources */ = {isa = PBXBuildFile; fileRef = 493033EC215A165700D1843B /* LEMutexLockRecursive.m */; };
 		493033F0215A26E200D1843B /* LEMutexLockCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 493033EF215A26E200D1843B /* LEMutexLockCondition.m */; };
 		493033F3215A2DB600D1843B /* LENSLock.m in Sources */ = {isa = PBXBuildFile; fileRef = 493033F2215A2DB600D1843B /* LENSLock.m */; };
+		493033F6215A311F00D1843B /* LENSCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 493033F5215A311F00D1843B /* LENSCondition.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,8 @@
 		493033EF215A26E200D1843B /* LEMutexLockCondition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LEMutexLockCondition.m; sourceTree = "<group>"; };
 		493033F1215A2DB600D1843B /* LENSLock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LENSLock.h; sourceTree = "<group>"; };
 		493033F2215A2DB600D1843B /* LENSLock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LENSLock.m; sourceTree = "<group>"; };
+		493033F4215A311F00D1843B /* LENSCondition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LENSCondition.h; sourceTree = "<group>"; };
+		493033F5215A311F00D1843B /* LENSCondition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LENSCondition.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +113,8 @@
 				493033EF215A26E200D1843B /* LEMutexLockCondition.m */,
 				493033F1215A2DB600D1843B /* LENSLock.h */,
 				493033F2215A2DB600D1843B /* LENSLock.m */,
+				493033F4215A311F00D1843B /* LENSCondition.h */,
+				493033F5215A311F00D1843B /* LENSCondition.m */,
 			);
 			path = Lock;
 			sourceTree = "<group>";
@@ -190,6 +195,7 @@
 				493033EA215A0F8D00D1843B /* LEMutexLock.m in Sources */,
 				4926619D2154CBDE003C6710 /* main.m in Sources */,
 				492661AC2154D9FD003C6710 /* LEOSSpinLock.m in Sources */,
+				493033F6215A311F00D1843B /* LENSCondition.m in Sources */,
 				4926618F2154CBDD003C6710 /* AppDelegate.m in Sources */,
 				493033E7215A092700D1843B /* LEOSUnfairLock.m in Sources */,
 				493033ED215A165700D1843B /* LEMutexLockRecursive.m in Sources */,
