@@ -11,7 +11,7 @@
 @interface LEBase : NSObject
 - (void)sellTest; // 卖票
 - (void)moneyTest; //存取前
-- (void)otherTest;
+- (void)otherTest; // 其他操作
 
 #pragma mark - 子类继承的方法
 - (void)__saveMoney;

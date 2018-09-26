@@ -42,3 +42,10 @@
     os_unfair_lock_unlock(&_lock);
 }
 @end
+
+/*
+ os_unfair_lock 用来代替OSSpinLock的技术方案
+ 
+    从底层调用来看，自旋锁和os_unfair_lock的区别，前者等待线程处于忙等，而后者等待线程处于休眠状态。
+ 
+ */

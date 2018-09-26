@@ -70,3 +70,20 @@
     pthread_mutex_destroy(&_ticketLock);
 }
 @end
+
+/*
+ pthread_mutex
+    一种跨平台的锁
+    互斥锁：等待锁的线程处于休眠状态。
+ 
+    pthread_mutex通过设置参数可以成为递归锁、条件锁。
+ 
+    NSLock是对mutex普通锁的封装
+ 
+    NSRecursiveLock是对mutex递归锁的封装
+ 
+    NSCondition是对mutex条件锁的封装
+ 
+    NSConditionLock是对NSCondition的进一步封装
+ 
+ */

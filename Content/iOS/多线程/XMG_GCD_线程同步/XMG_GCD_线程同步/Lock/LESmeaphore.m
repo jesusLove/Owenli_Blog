@@ -36,7 +36,16 @@
     // 让信号量的值增加1
     dispatch_semaphore_signal(self.semaphore);
 }
-/*
- 一次执行四个任务。
- */
 @end
+
+
+/*
+
+信号量：
+    控制线程的并发量。
+    只有信号值大于0时，才能执行开启新的线程。
+    dispatch_semaphore_wait() 信号值大于0时执行，并将信号值减一，然后开始执行后面的内容。
+    如果信号值小于等于0时，当前线程进入休眠等待，直到信号的值大于0
+ 
+    dispatch_semaphore_signal() 信号量的值增加1.
+ */
