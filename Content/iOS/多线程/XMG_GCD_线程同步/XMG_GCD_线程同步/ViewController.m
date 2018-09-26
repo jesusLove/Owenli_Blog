@@ -15,6 +15,7 @@
 #import "LENSLock.h"
 
 #import "LENSCondition.h"
+#import "LENSConditionLock.h"
 
 @interface ViewController ()
 @end
@@ -57,9 +58,13 @@
 //    [lock moneyTest];
     
     // NSCondition验证
-    LENSCondition *lock = [[LENSCondition alloc] init];
-    [lock otherTest];
+//    LENSCondition *lock = [[LENSCondition alloc] init];
+//    [lock otherTest];
     
+    
+    // NSConditionLock验证
+    LENSConditionLock *lock = [[LENSConditionLock alloc] init];
+    [lock otherTest];
 }
 
 
