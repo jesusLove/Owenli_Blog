@@ -17,6 +17,8 @@
 #import "LENSCondition.h"
 #import "LENSConditionLock.h"
 
+#import "LESmeaphore.h"
+
 @interface ViewController ()
 @end
 
@@ -63,7 +65,11 @@
     
     
     // NSConditionLock验证
-    LENSConditionLock *lock = [[LENSConditionLock alloc] init];
+//    LENSConditionLock *lock = [[LENSConditionLock alloc] init];
+//    [lock otherTest];
+    
+    // 验证信号量
+    LESmeaphore *lock = [[LESmeaphore alloc] init];
     [lock otherTest];
 }
 
