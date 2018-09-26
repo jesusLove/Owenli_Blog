@@ -22,6 +22,8 @@
 		493033F3215A2DB600D1843B /* LENSLock.m in Sources */ = {isa = PBXBuildFile; fileRef = 493033F2215A2DB600D1843B /* LENSLock.m */; };
 		493033F6215A311F00D1843B /* LENSCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 493033F5215A311F00D1843B /* LENSCondition.m */; };
 		493033F9215A33DA00D1843B /* LEAtomic.m in Sources */ = {isa = PBXBuildFile; fileRef = 493033F8215A33DA00D1843B /* LEAtomic.m */; };
+		49B0AEE7215B0F6D00927385 /* LENSConditionLock.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B0AEE6215B0F6D00927385 /* LENSConditionLock.m */; };
+		49B0AEEA215B1F1700927385 /* LESmeaphore.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B0AEE9215B1F1700927385 /* LESmeaphore.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +55,10 @@
 		493033F5215A311F00D1843B /* LENSCondition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LENSCondition.m; sourceTree = "<group>"; };
 		493033F7215A33DA00D1843B /* LEAtomic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LEAtomic.h; sourceTree = "<group>"; };
 		493033F8215A33DA00D1843B /* LEAtomic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LEAtomic.m; sourceTree = "<group>"; };
+		49B0AEE5215B0F6D00927385 /* LENSConditionLock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LENSConditionLock.h; sourceTree = "<group>"; };
+		49B0AEE6215B0F6D00927385 /* LENSConditionLock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LENSConditionLock.m; sourceTree = "<group>"; };
+		49B0AEE8215B1F1700927385 /* LESmeaphore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LESmeaphore.h; sourceTree = "<group>"; };
+		49B0AEE9215B1F1700927385 /* LESmeaphore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LESmeaphore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +126,10 @@
 				493033F5215A311F00D1843B /* LENSCondition.m */,
 				493033F7215A33DA00D1843B /* LEAtomic.h */,
 				493033F8215A33DA00D1843B /* LEAtomic.m */,
+				49B0AEE5215B0F6D00927385 /* LENSConditionLock.h */,
+				49B0AEE6215B0F6D00927385 /* LENSConditionLock.m */,
+				49B0AEE8215B1F1700927385 /* LESmeaphore.h */,
+				49B0AEE9215B1F1700927385 /* LESmeaphore.m */,
 			);
 			path = Lock;
 			sourceTree = "<group>";
@@ -197,6 +207,8 @@
 				493033F3215A2DB600D1843B /* LENSLock.m in Sources */,
 				492661922154CBDD003C6710 /* ViewController.m in Sources */,
 				493033F0215A26E200D1843B /* LEMutexLockCondition.m in Sources */,
+				49B0AEEA215B1F1700927385 /* LESmeaphore.m in Sources */,
+				49B0AEE7215B0F6D00927385 /* LENSConditionLock.m in Sources */,
 				493033F9215A33DA00D1843B /* LEAtomic.m in Sources */,
 				493033EA215A0F8D00D1843B /* LEMutexLock.m in Sources */,
 				4926619D2154CBDE003C6710 /* main.m in Sources */,

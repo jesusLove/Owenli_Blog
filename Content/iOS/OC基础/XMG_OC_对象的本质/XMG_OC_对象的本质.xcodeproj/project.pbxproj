@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4992A38E2154E43500C3393E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4992A38D2154E43500C3393E /* main.m */; };
+		4992A3962154E44100C3393E /* LEPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 4992A3952154E44100C3393E /* LEPerson.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,9 @@
 /* Begin PBXFileReference section */
 		4992A38A2154E43500C3393E /* XMG_OC_对象的本质 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "XMG_OC_对象的本质"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4992A38D2154E43500C3393E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4992A3942154E44100C3393E /* LEPerson.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LEPerson.h; sourceTree = "<group>"; };
+		4992A3952154E44100C3393E /* LEPerson.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LEPerson.m; sourceTree = "<group>"; };
+		4992A3982154E69600C3393E /* main-arm64.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "main-arm64.cpp"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +61,10 @@
 		4992A38C2154E43500C3393E /* XMG_OC_对象的本质 */ = {
 			isa = PBXGroup;
 			children = (
+				4992A3982154E69600C3393E /* main-arm64.cpp */,
 				4992A38D2154E43500C3393E /* main.m */,
+				4992A3942154E44100C3393E /* LEPerson.h */,
+				4992A3952154E44100C3393E /* LEPerson.m */,
 			);
 			path = "XMG_OC_对象的本质";
 			sourceTree = "<group>";
@@ -119,6 +126,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4992A38E2154E43500C3393E /* main.m in Sources */,
+				4992A3962154E44100C3393E /* LEPerson.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

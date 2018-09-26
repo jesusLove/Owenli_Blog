@@ -34,4 +34,25 @@ int main(int argc, const char * argv[]) {
     Class isa; // isa 指针占用8字节。
  };
  
+ 实例，类，元类
+
+ instance
+ 
+     通过alloc产生的对象，每次都会产生新的实例对象
+     存放成员变量（包含isa）
+ 
+ class
+ 
+     每个类在内存中有且仅有一个class对象
+     isa指针
+     superCalss指针
+     类的属性信息（@property）类的对象方法信息（Instance Method）
+     类的协议信息(protocol) 类的成员变量信息（ivar）
+ 
+ meta-class
+ 
+     isa指针
+     superClass指针
+     类的类方法信息（class Method)
  */
+
