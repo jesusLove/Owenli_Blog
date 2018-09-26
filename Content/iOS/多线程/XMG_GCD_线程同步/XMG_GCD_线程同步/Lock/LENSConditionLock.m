@@ -28,7 +28,8 @@
 - (void)__one {
 
     // 当锁内部条件值为1时，加锁。
-    [self.condition lockWhenCondition:1];
+//    [self.condition lockWhenCondition:1];
+    [self.condition lock]; // 直接使用lock也可以
     sleep(1);
     NSLog(@"%s ①", __func__);
     [self.condition unlockWithCondition:2]; // 解锁，并且条件设置为2
@@ -39,6 +40,15 @@
     [self.condition lockWhenCondition:2]; //条件值为2时，加锁。
     sleep(1);
     NSLog(@"%s ②", __func__);
+    [self.condition unlockWithCondition:3];
+}
+
+// 添加
+- (void)__three {
+    
+    [self.condition lockWhenCondition:3]; //条件值为2时，加锁。
+    sleep(1);
+    NSLog(@"%s ③", __func__);
     [self.condition unlock];
 }
 
@@ -47,6 +57,9 @@
     [[[NSThread alloc] initWithTarget:self selector:@selector(__one) object:nil] start];
     // ②
     [[[NSThread alloc] initWithTarget:self selector:@selector(__two) object:nil] start];
-    // 通过设置条件值，可以决定条件值的执行顺序。
+    // ③
+    [[[NSThread alloc] initWithTarget:self selector:@selector(__three) object:nil] start];
+    
+    // 通过设置条件值，可以决定线程的执行顺序。
 }
 @end
