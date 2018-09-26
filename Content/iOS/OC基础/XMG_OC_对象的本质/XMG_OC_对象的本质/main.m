@@ -11,20 +11,35 @@
 #import <malloc/malloc.h>
 #import "LEPerson.h"
 
-
+void objc_test() {
+    LEPerson *person = [[LEPerson alloc] init];
+    
+    NSLog(@"%zd", class_getInstanceSize([LEPerson class])); //实例对象，成员变量占用的大小
+    // 8
+    NSLog(@"%zd", malloc_size((__bridge const void *)(person))); // 获取指针执行内存地址的大小。
+    // 16
+    // xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc main.m -o main-arm64.cpp
+    // 将main.m转为arm64架构的C++代码
+    NSLog(@"Person实例：%p", person); //实例对象地址
+    NSLog(@"Person类对象：%p", [person class]); // 类对象地址
+    NSLog(@"Person类对象: %p", [LEPerson class]); // 类对象地址
+    NSLog(@"Person元类对象： %p", object_getClass([person class])); //元类地址
+    
+    // 判断是否是元类
+    NSLog(@"%d", class_isMetaClass(object_getClass([person class])));
+    
+    
+    
+}
 /**
  一个对象占用多大空间的问题？
+ 系统分配了16字节给Person对象，通过malloc_size函数获得
+ 但Person对象内部只使用了8个字节的空间，64位环境下，通过class_getInstanceSize函数获得。
  */
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        LEPerson *person = [[LEPerson alloc] init];
+        objc_test();
         
-        NSLog(@"%zd", class_getInstanceSize([LEPerson class])); //实例对象，成员变量占用的大小
-        // 8
-        NSLog(@"%zd", malloc_size((__bridge const void *)(person))); // 获取指针执行内存地址的大小。
-        // 16
-        // xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc main.m -o main-arm64.cpp
-        // 将main.m转为arm64架构的C++代码
     }
     return 0;
 }
