@@ -8,7 +8,8 @@
 
 #import "LEMutexLock.h"
 #import <pthread.h>
-
+// 不需要的时候需要销毁掉
+// 通过设置属性，可以配置成递归锁，和条件锁。
 @interface LEMutexLock ()
 @property (nonatomic, assign) pthread_mutex_t lock;
 @property (nonatomic, assign) pthread_mutex_t ticketLock;

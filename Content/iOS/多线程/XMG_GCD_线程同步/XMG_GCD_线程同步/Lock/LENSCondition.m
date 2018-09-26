@@ -6,7 +6,10 @@
 //  Copyright © 2018年 LQQ. All rights reserved.
 //
 
+
 #import "LENSCondition.h"
+
+// 对mutex条件锁的封装
 @interface LENSCondition ()
 @property (nonatomic, strong) NSCondition *condition;
 @property (nonatomic, strong) NSMutableArray *data;

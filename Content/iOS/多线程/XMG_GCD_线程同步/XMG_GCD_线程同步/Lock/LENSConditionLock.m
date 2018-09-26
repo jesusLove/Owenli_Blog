@@ -7,7 +7,7 @@
 //
 
 #import "LENSConditionLock.h"
-
+// 对NSCondition的进一步封装。
 @interface LENSConditionLock ()
 @property (nonatomic, strong) NSConditionLock *condition;
 @end
@@ -22,7 +22,6 @@
     }
     return self;
 }
-
 
 // 删除
 - (void)__one {

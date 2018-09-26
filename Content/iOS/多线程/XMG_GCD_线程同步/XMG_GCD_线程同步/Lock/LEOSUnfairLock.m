@@ -8,7 +8,7 @@
 
 #import "LEOSUnfairLock.h"
 #import <os/lock.h>
-
+// 自旋锁的替代方案：区别在于，不会忙等，而是休眠
 @interface LEOSUnfairLock ()
 @property (nonatomic, assign) os_unfair_lock lock; // 存钱和取钱的锁
 @end

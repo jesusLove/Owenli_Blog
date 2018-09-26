@@ -8,6 +8,7 @@
 
 #import "LENSLock.h"
 
+// 对mutex的普通锁的封装
 @interface LENSLock ()
 @property (nonatomic, strong) NSLock* lock;
 @property (nonatomic, strong) NSLock* ticketLock;
