@@ -10,10 +10,7 @@
 
 @interface LETimer : NSObject
 
-
 /**
- 
-
  @param task 任务
  @param start 多久后执行
  @param interval 时间间隔

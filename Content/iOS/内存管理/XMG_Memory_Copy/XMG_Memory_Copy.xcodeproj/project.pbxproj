@@ -7,32 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		49B0AF9C215C627700927385 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B0AF9B215C627700927385 /* AppDelegate.m */; };
-		49B0AF9F215C627700927385 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B0AF9E215C627700927385 /* ViewController.m */; };
-		49B0AFA2215C627700927385 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49B0AFA0215C627700927385 /* Main.storyboard */; };
-		49B0AFA4215C627900927385 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49B0AFA3215C627900927385 /* Assets.xcassets */; };
-		49B0AFA7215C627900927385 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49B0AFA5215C627900927385 /* LaunchScreen.storyboard */; };
-		49B0AFAA215C627900927385 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B0AFA9215C627900927385 /* main.m */; };
-		49B0AFB2215C69CB00927385 /* LETimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B0AFB1215C69CB00927385 /* LETimer.m */; };
+		49521568215CAC870096AFC3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 49521567215CAC870096AFC3 /* AppDelegate.m */; };
+		4952156B215CAC870096AFC3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4952156A215CAC870096AFC3 /* ViewController.m */; };
+		4952156E215CAC870096AFC3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4952156C215CAC870096AFC3 /* Main.storyboard */; };
+		49521570215CAC880096AFC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4952156F215CAC880096AFC3 /* Assets.xcassets */; };
+		49521573215CAC880096AFC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49521571215CAC880096AFC3 /* LaunchScreen.storyboard */; };
+		49521576215CAC880096AFC3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 49521575215CAC880096AFC3 /* main.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		49B0AF97215C627700927385 /* XMG_Memory_定时器.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "XMG_Memory_定时器.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		49B0AF9A215C627700927385 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		49B0AF9B215C627700927385 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		49B0AF9D215C627700927385 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		49B0AF9E215C627700927385 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		49B0AFA1215C627700927385 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		49B0AFA3215C627900927385 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		49B0AFA6215C627900927385 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		49B0AFA8215C627900927385 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		49B0AFA9215C627900927385 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		49B0AFB0215C69CB00927385 /* LETimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LETimer.h; sourceTree = "<group>"; };
-		49B0AFB1215C69CB00927385 /* LETimer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LETimer.m; sourceTree = "<group>"; };
+		49521563215CAC870096AFC3 /* XMG_Memory_Copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XMG_Memory_Copy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		49521566215CAC870096AFC3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		49521567215CAC870096AFC3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		49521569215CAC870096AFC3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		4952156A215CAC870096AFC3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		4952156D215CAC870096AFC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4952156F215CAC880096AFC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		49521572215CAC880096AFC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		49521574215CAC880096AFC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49521575215CAC880096AFC3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		49B0AF94215C627700927385 /* Frameworks */ = {
+		49521560215CAC870096AFC3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -42,75 +39,73 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		49B0AF8E215C627700927385 = {
+		4952155A215CAC870096AFC3 = {
 			isa = PBXGroup;
 			children = (
-				49B0AF99215C627700927385 /* XMG_Memory_定时器 */,
-				49B0AF98215C627700927385 /* Products */,
+				49521565215CAC870096AFC3 /* XMG_Memory_Copy */,
+				49521564215CAC870096AFC3 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		49B0AF98215C627700927385 /* Products */ = {
+		49521564215CAC870096AFC3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				49B0AF97215C627700927385 /* XMG_Memory_定时器.app */,
+				49521563215CAC870096AFC3 /* XMG_Memory_Copy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		49B0AF99215C627700927385 /* XMG_Memory_定时器 */ = {
+		49521565215CAC870096AFC3 /* XMG_Memory_Copy */ = {
 			isa = PBXGroup;
 			children = (
-				49B0AF9A215C627700927385 /* AppDelegate.h */,
-				49B0AF9B215C627700927385 /* AppDelegate.m */,
-				49B0AF9D215C627700927385 /* ViewController.h */,
-				49B0AF9E215C627700927385 /* ViewController.m */,
-				49B0AFA0215C627700927385 /* Main.storyboard */,
-				49B0AFA3215C627900927385 /* Assets.xcassets */,
-				49B0AFA5215C627900927385 /* LaunchScreen.storyboard */,
-				49B0AFA8215C627900927385 /* Info.plist */,
-				49B0AFA9215C627900927385 /* main.m */,
-				49B0AFB0215C69CB00927385 /* LETimer.h */,
-				49B0AFB1215C69CB00927385 /* LETimer.m */,
+				49521566215CAC870096AFC3 /* AppDelegate.h */,
+				49521567215CAC870096AFC3 /* AppDelegate.m */,
+				49521569215CAC870096AFC3 /* ViewController.h */,
+				4952156A215CAC870096AFC3 /* ViewController.m */,
+				4952156C215CAC870096AFC3 /* Main.storyboard */,
+				4952156F215CAC880096AFC3 /* Assets.xcassets */,
+				49521571215CAC880096AFC3 /* LaunchScreen.storyboard */,
+				49521574215CAC880096AFC3 /* Info.plist */,
+				49521575215CAC880096AFC3 /* main.m */,
 			);
-			path = "XMG_Memory_定时器";
+			path = XMG_Memory_Copy;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		49B0AF96215C627700927385 /* XMG_Memory_定时器 */ = {
+		49521562215CAC870096AFC3 /* XMG_Memory_Copy */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 49B0AFAD215C627900927385 /* Build configuration list for PBXNativeTarget "XMG_Memory_定时器" */;
+			buildConfigurationList = 49521579215CAC880096AFC3 /* Build configuration list for PBXNativeTarget "XMG_Memory_Copy" */;
 			buildPhases = (
-				49B0AF93215C627700927385 /* Sources */,
-				49B0AF94215C627700927385 /* Frameworks */,
-				49B0AF95215C627700927385 /* Resources */,
+				4952155F215CAC870096AFC3 /* Sources */,
+				49521560215CAC870096AFC3 /* Frameworks */,
+				49521561215CAC870096AFC3 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "XMG_Memory_定时器";
-			productName = "XMG_Memory_定时器";
-			productReference = 49B0AF97215C627700927385 /* XMG_Memory_定时器.app */;
+			name = XMG_Memory_Copy;
+			productName = XMG_Memory_Copy;
+			productReference = 49521563215CAC870096AFC3 /* XMG_Memory_Copy.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		49B0AF8F215C627700927385 /* Project object */ = {
+		4952155B215CAC870096AFC3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = LQQ;
 				TargetAttributes = {
-					49B0AF96215C627700927385 = {
+					49521562215CAC870096AFC3 = {
 						CreatedOnToolsVersion = 9.4.1;
 					};
 				};
 			};
-			buildConfigurationList = 49B0AF92215C627700927385 /* Build configuration list for PBXProject "XMG_Memory_定时器" */;
+			buildConfigurationList = 4952155E215CAC870096AFC3 /* Build configuration list for PBXProject "XMG_Memory_Copy" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -118,56 +113,55 @@
 				en,
 				Base,
 			);
-			mainGroup = 49B0AF8E215C627700927385;
-			productRefGroup = 49B0AF98215C627700927385 /* Products */;
+			mainGroup = 4952155A215CAC870096AFC3;
+			productRefGroup = 49521564215CAC870096AFC3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				49B0AF96215C627700927385 /* XMG_Memory_定时器 */,
+				49521562215CAC870096AFC3 /* XMG_Memory_Copy */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		49B0AF95215C627700927385 /* Resources */ = {
+		49521561215CAC870096AFC3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49B0AFA7215C627900927385 /* LaunchScreen.storyboard in Resources */,
-				49B0AFA4215C627900927385 /* Assets.xcassets in Resources */,
-				49B0AFA2215C627700927385 /* Main.storyboard in Resources */,
+				49521573215CAC880096AFC3 /* LaunchScreen.storyboard in Resources */,
+				49521570215CAC880096AFC3 /* Assets.xcassets in Resources */,
+				4952156E215CAC870096AFC3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		49B0AF93215C627700927385 /* Sources */ = {
+		4952155F215CAC870096AFC3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49B0AF9F215C627700927385 /* ViewController.m in Sources */,
-				49B0AFAA215C627900927385 /* main.m in Sources */,
-				49B0AFB2215C69CB00927385 /* LETimer.m in Sources */,
-				49B0AF9C215C627700927385 /* AppDelegate.m in Sources */,
+				4952156B215CAC870096AFC3 /* ViewController.m in Sources */,
+				49521576215CAC880096AFC3 /* main.m in Sources */,
+				49521568215CAC870096AFC3 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		49B0AFA0215C627700927385 /* Main.storyboard */ = {
+		4952156C215CAC870096AFC3 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				49B0AFA1215C627700927385 /* Base */,
+				4952156D215CAC870096AFC3 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		49B0AFA5215C627900927385 /* LaunchScreen.storyboard */ = {
+		49521571215CAC880096AFC3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				49B0AFA6215C627900927385 /* Base */,
+				49521572215CAC880096AFC3 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -175,7 +169,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		49B0AFAB215C627900927385 /* Debug */ = {
+		49521577215CAC880096AFC3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -233,7 +227,7 @@
 			};
 			name = Debug;
 		};
-		49B0AFAC215C627900927385 /* Release */ = {
+		49521578215CAC880096AFC3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -285,35 +279,35 @@
 			};
 			name = Release;
 		};
-		49B0AFAE215C627900927385 /* Debug */ = {
+		4952157A215CAC880096AFC3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T24XQT78M7;
-				INFOPLIST_FILE = "XMG_Memory_定时器/Info.plist";
+				INFOPLIST_FILE = XMG_Memory_Copy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.lqq.object.XMG-Memory----";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lqq.object.XMG-Memory-Copy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		49B0AFAF215C627900927385 /* Release */ = {
+		4952157B215CAC880096AFC3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T24XQT78M7;
-				INFOPLIST_FILE = "XMG_Memory_定时器/Info.plist";
+				INFOPLIST_FILE = XMG_Memory_Copy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.lqq.object.XMG-Memory----";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lqq.object.XMG-Memory-Copy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -322,25 +316,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		49B0AF92215C627700927385 /* Build configuration list for PBXProject "XMG_Memory_定时器" */ = {
+		4952155E215CAC870096AFC3 /* Build configuration list for PBXProject "XMG_Memory_Copy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				49B0AFAB215C627900927385 /* Debug */,
-				49B0AFAC215C627900927385 /* Release */,
+				49521577215CAC880096AFC3 /* Debug */,
+				49521578215CAC880096AFC3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		49B0AFAD215C627900927385 /* Build configuration list for PBXNativeTarget "XMG_Memory_定时器" */ = {
+		49521579215CAC880096AFC3 /* Build configuration list for PBXNativeTarget "XMG_Memory_Copy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				49B0AFAE215C627900927385 /* Debug */,
-				49B0AFAF215C627900927385 /* Release */,
+				4952157A215CAC880096AFC3 /* Debug */,
+				4952157B215CAC880096AFC3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 49B0AF8F215C627700927385 /* Project object */;
+	rootObject = 4952155B215CAC870096AFC3 /* Project object */;
 }

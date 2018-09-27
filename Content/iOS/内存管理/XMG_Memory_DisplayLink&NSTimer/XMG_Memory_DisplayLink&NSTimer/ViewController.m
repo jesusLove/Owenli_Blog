@@ -24,6 +24,7 @@
     
     //发生循环引用
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:[LETimeProxy proxyWithTarget:self] selector:@selector(timeTest) userInfo:nil repeats:YES];
+//    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timeTest) userInfo:nil repeats:YES];
     
     
     // timer解决方案一：使用BlockAPI
@@ -34,6 +35,13 @@
     
     
 }
+
+//- (void)viewWillDisappear:(BOOL)animated {
+//    [super viewWillDisappear:animated];
+//    [self.timer invalidate];
+//}
+
+
 - (void)timeTest {
     NSLog(@"%s", __func__);
 }
@@ -43,9 +51,10 @@
 }
 
 - (void)dealloc {
+    NSLog(@"%s", __func__);
     // 没有用的，已经强引用了，不会再调用
 //    [self.link invalidate];
-    [self.timer invalidate];
+//    [self.timer invalidate];
 }
 @end
 
