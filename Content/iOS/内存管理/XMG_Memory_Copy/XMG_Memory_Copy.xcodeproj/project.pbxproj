@@ -13,6 +13,7 @@
 		49521570215CAC880096AFC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4952156F215CAC880096AFC3 /* Assets.xcassets */; };
 		49521573215CAC880096AFC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49521571215CAC880096AFC3 /* LaunchScreen.storyboard */; };
 		49521576215CAC880096AFC3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 49521575215CAC880096AFC3 /* main.m */; };
+		4952157E215CB1710096AFC3 /* LEPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 4952157D215CB1710096AFC3 /* LEPerson.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		49521572215CAC880096AFC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		49521574215CAC880096AFC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49521575215CAC880096AFC3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4952157C215CB1710096AFC3 /* LEPerson.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LEPerson.h; sourceTree = "<group>"; };
+		4952157D215CB1710096AFC3 /* LEPerson.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LEPerson.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +70,8 @@
 				49521571215CAC880096AFC3 /* LaunchScreen.storyboard */,
 				49521574215CAC880096AFC3 /* Info.plist */,
 				49521575215CAC880096AFC3 /* main.m */,
+				4952157C215CB1710096AFC3 /* LEPerson.h */,
+				4952157D215CB1710096AFC3 /* LEPerson.m */,
 			);
 			path = XMG_Memory_Copy;
 			sourceTree = "<group>";
@@ -142,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4952156B215CAC870096AFC3 /* ViewController.m in Sources */,
+				4952157E215CB1710096AFC3 /* LEPerson.m in Sources */,
 				49521576215CAC880096AFC3 /* main.m in Sources */,
 				49521568215CAC870096AFC3 /* AppDelegate.m in Sources */,
 			);
@@ -178,7 +184,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -236,7 +242,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
