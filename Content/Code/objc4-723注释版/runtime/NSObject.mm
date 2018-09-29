@@ -801,7 +801,7 @@ class AutoreleasePoolPage
     }
 
     id * end() {
-        return (id *) ((uint8_t *)this+SIZE);
+        return (id *) ((uint8_t *)this+SIZE); // SIZE为：4096
     }
 
     bool empty() {
