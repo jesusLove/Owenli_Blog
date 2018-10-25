@@ -34,6 +34,7 @@
 		49B0AF27215B692E00927385 /* LEPerson+Run.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "LEPerson+Run.m"; sourceTree = "<group>"; };
 		49B0AF29215B698200927385 /* LEPerson+Play.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LEPerson+Play.h"; sourceTree = "<group>"; };
 		49B0AF2A215B698200927385 /* LEPerson+Play.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "LEPerson+Play.m"; sourceTree = "<group>"; };
+		49CB99212181954C00D75B34 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +51,7 @@
 		49B0AF10215B690300927385 = {
 			isa = PBXGroup;
 			children = (
+				49CB99212181954C00D75B34 /* README.md */,
 				49B0AF1B215B690300927385 /* XMG_OC_Category */,
 				49B0AF1A215B690300927385 /* Products */,
 			);
