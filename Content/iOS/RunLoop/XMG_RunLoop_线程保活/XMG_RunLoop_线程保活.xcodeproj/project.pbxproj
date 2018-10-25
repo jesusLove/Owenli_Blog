@@ -84,8 +84,6 @@
 				494950AE2153336100B9546F /* LaunchScreen.storyboard */,
 				494950B12153336100B9546F /* Info.plist */,
 				494950B22153336100B9546F /* main.m */,
-				494950B92153345500B9546F /* LEThread.h */,
-				494950BA2153345500B9546F /* LEThread.m */,
 			);
 			path = "XMG_RunLoop_线程保活";
 			sourceTree = "<group>";
@@ -93,6 +91,8 @@
 		494950C62153482300B9546F /* RunLoopTool */ = {
 			isa = PBXGroup;
 			children = (
+				494950B92153345500B9546F /* LEThread.h */,
+				494950BA2153345500B9546F /* LEThread.m */,
 				494950C72153482300B9546F /* LEPermanentThread.h */,
 				494950C82153482300B9546F /* LEPermanentThread.m */,
 			);
