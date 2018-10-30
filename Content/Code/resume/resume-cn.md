@@ -70,7 +70,7 @@
 
 ##### 编程语言
 
-[Objecttive-C]()、[Swift](https://swift.org) 、[JavaScript](https://www.javascript.com)、[Python](https://www.python.org)、[HTML](https://www.w3.org/html)
+[Objective-C]()、[Swift](https://swift.org) 、[JavaScript](https://www.javascript.com)、[Python](https://www.python.org)、[HTML](https://www.w3.org/html)
 
 
 #### 教育经历
