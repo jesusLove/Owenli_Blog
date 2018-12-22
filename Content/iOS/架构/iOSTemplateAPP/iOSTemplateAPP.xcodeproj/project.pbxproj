@@ -11,6 +11,7 @@
 		49058F5F21CA5D0A009F5D19 /* LEActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 49058F5E21CA5D0A009F5D19 /* LEActionSheet.m */; };
 		4917716C21CCC6080081B5AC /* LEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4917716B21CCC6080081B5AC /* LEViewController.m */; };
 		4917717121CCCA000081B5AC /* LESDKManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4917717021CCCA000081B5AC /* LESDKManager.m */; };
+		49582B7B21CDDA2500D912A2 /* LEAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 49582B7A21CDDA2500D912A2 /* LEAudioPlayer.m */; };
 		49B2018421CCD018004D3677 /* UIView+LEExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B2018321CCD018004D3677 /* UIView+LEExtensions.m */; };
 		49CF7E1F21C7798300536DC6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CF7E1E21C7798300536DC6 /* AppDelegate.m */; };
 		49CF7E2221C7798300536DC6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CF7E2121C7798300536DC6 /* ViewController.m */; };
@@ -37,6 +38,8 @@
 		4917716E21CCC9910081B5AC /* LESDKConfigKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LESDKConfigKey.h; sourceTree = "<group>"; };
 		4917716F21CCCA000081B5AC /* LESDKManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LESDKManager.h; sourceTree = "<group>"; };
 		4917717021CCCA000081B5AC /* LESDKManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LESDKManager.m; sourceTree = "<group>"; };
+		49582B7921CDDA2500D912A2 /* LEAudioPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LEAudioPlayer.h; sourceTree = "<group>"; };
+		49582B7A21CDDA2500D912A2 /* LEAudioPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LEAudioPlayer.m; sourceTree = "<group>"; };
 		49B2018121CCCB6D004D3677 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		49B2018221CCD018004D3677 /* UIView+LEExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+LEExtensions.h"; sourceTree = "<group>"; };
 		49B2018321CCD018004D3677 /* UIView+LEExtensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+LEExtensions.m"; sourceTree = "<group>"; };
@@ -114,6 +117,7 @@
 		4917716921CCC54B0081B5AC /* LEExtensions */ = {
 			isa = PBXGroup;
 			children = (
+				49582B7721CDD9EB00D912A2 /* Utilities */,
 				4917716D21CCC60D0081B5AC /* LEViewController */,
 			);
 			path = LEExtensions;
@@ -126,6 +130,23 @@
 				4917716B21CCC6080081B5AC /* LEViewController.m */,
 			);
 			path = LEViewController;
+			sourceTree = "<group>";
+		};
+		49582B7721CDD9EB00D912A2 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				49582B7821CDD9FB00D912A2 /* MediaUtils */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		49582B7821CDD9FB00D912A2 /* MediaUtils */ = {
+			isa = PBXGroup;
+			children = (
+				49582B7921CDDA2500D912A2 /* LEAudioPlayer.h */,
+				49582B7A21CDDA2500D912A2 /* LEAudioPlayer.m */,
+			);
+			path = MediaUtils;
 			sourceTree = "<group>";
 		};
 		49CF7E1121C7798300536DC6 = {
@@ -436,6 +457,7 @@
 				49058F5F21CA5D0A009F5D19 /* LEActionSheet.m in Sources */,
 				49B2018421CCD018004D3677 /* UIView+LEExtensions.m in Sources */,
 				49CF7E2D21C7798600536DC6 /* main.m in Sources */,
+				49582B7B21CDDA2500D912A2 /* LEAudioPlayer.m in Sources */,
 				4917716C21CCC6080081B5AC /* LEViewController.m in Sources */,
 				49CF7E1F21C7798300536DC6 /* AppDelegate.m in Sources */,
 				49CF7E3C21C77B7800536DC6 /* LELaunchManager.m in Sources */,

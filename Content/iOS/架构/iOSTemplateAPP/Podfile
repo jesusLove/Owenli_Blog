@@ -6,17 +6,17 @@ target 'iOSTemplateAPP' do
   # use_frameworks!
 
   # Pods for iOSTemplateAPP
-
-  pod 'AFNetworking' 
+  # ---------------------------- 基础三方库 ----------------------
+  pod 'AFNetworking' # 网络
   pod 'JKCategories' # 分类
-  
-  pod 'UMengAnalytics' #友盟统计
-  
   pod 'CocoaLumberjack' # 日志
+  pod 'SDWebImage' # 图库
+  pod 'Masonry' # 布局
+  pod 'MJRefresh' # 刷新
+  pod 'MJExtension' # Model
   
-  pod 'SDWebImage'
-  pod 'Masonry'
-  pod 'MJRefresh'
-  pod 'MJExtension'
-  pod 'FMDB'
+  # ---------------------- 其他 --------------------------------
+  pod 'UMengAnalytics' #友盟统计
+  pod 'FMDB' # SQLite3
+  
 end

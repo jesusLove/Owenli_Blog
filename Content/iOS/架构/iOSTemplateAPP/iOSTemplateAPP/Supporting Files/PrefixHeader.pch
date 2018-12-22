@@ -12,8 +12,15 @@
 #import "LEKit.h"
 
 #import <Masonry/Masonry.h>
+
 #import <UMMobClick/MobClick.h>
-#import <CocoaLumberjack/CocoaLumberjack.h>
+
+
 #import <MJExtension/MJExtension.h>
+
 #import <JKCategories/JKCategories.h>
+
+#import <CocoaLumberjack.h>
+
+static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
 #endif /* PrefixHeader_pch */
