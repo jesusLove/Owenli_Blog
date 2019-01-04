@@ -9,6 +9,12 @@
 #ifndef LEKit_h
 #define LEKit_h
 
+// 自定义分类
 #import "LECategories.h"
+// 自定义控件
 #import "LEFuntionals.h"
+// 基础常用宏
+#import "LECommonMacros.h"
+
+
 #endif /* LEKit_h */

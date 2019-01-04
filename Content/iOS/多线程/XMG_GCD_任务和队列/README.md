@@ -37,7 +37,10 @@ dispatch_queue_t queue = dispatch_queue_create("com.lqq.queue", DISPATCH_QUEUE_S
 ```Objective-c
 dispatch_queue_t queue = dispatch_queue_create("com.lqq.queue", DISPATCH_QUEUE_CONCURRENT);
 ```
+# 主队列和全局队列
 
+主队列（main queue）: 是串行队列，在主RunLoop中执行。
+全局队列 (global queue)：是并发队列，系统提供了四种优先级：高、默认、低、后台。
 
 # 注意问题
 
