@@ -1,30 +1,7 @@
-# Dispath Source Timer 定时器
+# GCD目录
 
-```Objective-c
-- (void)startRoundDispathTimerWithDuration:(CGFloat)duration {
-    self.roundLayer.strokeStart = 0;
-    // 时间间隔
-    NSTimeInterval period = 0.05;
-    __block CGFloat roundDuration = duration;
-    // 创建一个定时源
-    _roundTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0));
-    dispatch_source_set_timer(_roundTimer, dispatch_walltime(NULL, 0), period * NSEC_PER_SEC, 0);
-    // 指定需要执行的任务
-    dispatch_source_set_event_handler(_roundTimer, ^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (roundDuration <= 0) {
-                self.roundLayer.strokeStart = 1;
-                // 处理结束
-                dispatch_source_cancel(self.roundTimer);
-                self.roundTimer = nil;
-            }
-            self.roundLayer.strokeStart += 1 / (duration / period);
-            roundDuration -= period;
-        });
-    });
-    // 启动Source
-    dispatch_resume(_roundTimer);
-}
-```
-
-参考：DispathSourceDemo示例项目
+* [任务和队列](https://github.com/jesusLove/Owenli_Blog/tree/master/Content/iOS/%E5%A4%9A%E7%BA%BF%E7%A8%8B/XMG_GCD_%E4%BB%BB%E5%8A%A1%E5%92%8C%E9%98%9F%E5%88%97/README.md)
+* [多读单写](https://github.com/jesusLove/Owenli_Blog/tree/master/Content/iOS/%E5%A4%9A%E7%BA%BF%E7%A8%8B/XMG_GCD_%E5%A4%9A%E8%AF%BB%E5%8D%95%E5%86%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/README.md)
+* [队列组](https://github.com/jesusLove/Owenli_Blog/tree/master/Content/iOS/%E5%A4%9A%E7%BA%BF%E7%A8%8B/XMG_GCD_%E9%98%9F%E5%88%97%E7%BB%84/README.md)
+* [线程同步](https://github.com/jesusLove/Owenli_Blog/tree/master/Content/iOS/%E5%A4%9A%E7%BA%BF%E7%A8%8B/XMG_GCD_%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5/README.md)
+* [DispathSource](https://github.com/jesusLove/Owenli_Blog/tree/master/Content/iOS/%E5%A4%9A%E7%BA%BF%E7%A8%8B/DispatchSourceDemo/README.md)

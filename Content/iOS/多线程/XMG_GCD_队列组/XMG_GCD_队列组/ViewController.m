@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self test];
 }
 #pragma mark - 多线程组
 // dispatch_group_notify
