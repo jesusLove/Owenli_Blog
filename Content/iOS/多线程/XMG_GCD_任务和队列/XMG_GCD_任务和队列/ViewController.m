@@ -200,4 +200,15 @@
 //------------
 
 
+
+#pragma mark - # dispath_after
+
+- (void)test_dispath_after {
+    // 3秒后用dispath_after函数将Block追加到主队列中。
+    // 在RunLoop中，若每隔1/60秒执行循环一次，那么Block最快3秒后执行，最慢(3 + 1/60)秒后执行。若主队列处理大量任务时，时间会更长。
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        NSLog(@"至少等待3秒钟");
+    });
+}
+
 @end
