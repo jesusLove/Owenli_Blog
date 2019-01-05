@@ -1,0 +1,472 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		496A891621D4C2C4000FFFD4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 496A891521D4C2C4000FFFD4 /* AppDelegate.m */; };
+		496A891921D4C2C4000FFFD4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 496A891821D4C2C4000FFFD4 /* ViewController.m */; };
+		496A891C21D4C2C4000FFFD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 496A891A21D4C2C4000FFFD4 /* Main.storyboard */; };
+		496A891E21D4C2C7000FFFD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 496A891D21D4C2C7000FFFD4 /* Assets.xcassets */; };
+		496A892121D4C2C7000FFFD4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 496A891F21D4C2C7000FFFD4 /* LaunchScreen.storyboard */; };
+		496A892421D4C2C7000FFFD4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 496A892321D4C2C7000FFFD4 /* main.m */; };
+		496A893021D5C2CE000FFFD4 /* LENetworkConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 496A892F21D5C2CE000FFFD4 /* LENetworkConfig.m */; };
+		4971E1AF21D6FB610082EC53 /* LENetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4971E1AE21D6FB610082EC53 /* LENetworkManager.m */; };
+		4971E1B221D74F590082EC53 /* LENetworkAgency.m in Sources */ = {isa = PBXBuildFile; fileRef = 4971E1B121D74F590082EC53 /* LENetworkAgency.m */; };
+		49D3DE7B21DDB5BD005D3EAF /* LENetworkRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D3DE7A21DDB5BD005D3EAF /* LENetworkRequestModel.m */; };
+		49D3DE7E21DDC655005D3EAF /* LENetworkRequestPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D3DE7D21DDC655005D3EAF /* LENetworkRequestPool.m */; };
+		49D3DE8521DDDF72005D3EAF /* LENetworkUploadAgency.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D3DE8421DDDF72005D3EAF /* LENetworkUploadAgency.m */; };
+		49D3DE8821DDE021005D3EAF /* LENetworkDownloadAgency.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D3DE8721DDE021005D3EAF /* LENetworkDownloadAgency.m */; };
+		EA570F1DA73F4AF2EE6AAEFB /* libPods-LENetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D694B69BF6D8FBA2E4A76D19 /* libPods-LENetwork.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		496A891121D4C2C4000FFFD4 /* LENetwork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LENetwork.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		496A891421D4C2C4000FFFD4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		496A891521D4C2C4000FFFD4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		496A891721D4C2C4000FFFD4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		496A891821D4C2C4000FFFD4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		496A891B21D4C2C4000FFFD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		496A891D21D4C2C7000FFFD4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		496A892021D4C2C7000FFFD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		496A892221D4C2C7000FFFD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		496A892321D4C2C7000FFFD4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		496A892E21D5C2CE000FFFD4 /* LENetworkConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LENetworkConfig.h; sourceTree = "<group>"; };
+		496A892F21D5C2CE000FFFD4 /* LENetworkConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LENetworkConfig.m; sourceTree = "<group>"; };
+		496A893721D60547000FFFD4 /* LENetworkHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LENetworkHeader.h; sourceTree = "<group>"; };
+		4971E1AD21D6FB610082EC53 /* LENetworkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LENetworkManager.h; sourceTree = "<group>"; };
+		4971E1AE21D6FB610082EC53 /* LENetworkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LENetworkManager.m; sourceTree = "<group>"; };
+		4971E1B021D74F590082EC53 /* LENetworkAgency.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LENetworkAgency.h; sourceTree = "<group>"; };
+		4971E1B121D74F590082EC53 /* LENetworkAgency.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LENetworkAgency.m; sourceTree = "<group>"; };
+		49D3DE7921DDB5BD005D3EAF /* LENetworkRequestModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LENetworkRequestModel.h; sourceTree = "<group>"; };
+		49D3DE7A21DDB5BD005D3EAF /* LENetworkRequestModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LENetworkRequestModel.m; sourceTree = "<group>"; };
+		49D3DE7C21DDC655005D3EAF /* LENetworkRequestPool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LENetworkRequestPool.h; sourceTree = "<group>"; };
+		49D3DE7D21DDC655005D3EAF /* LENetworkRequestPool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LENetworkRequestPool.m; sourceTree = "<group>"; };
+		49D3DE8321DDDF72005D3EAF /* LENetworkUploadAgency.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LENetworkUploadAgency.h; sourceTree = "<group>"; };
+		49D3DE8421DDDF72005D3EAF /* LENetworkUploadAgency.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LENetworkUploadAgency.m; sourceTree = "<group>"; };
+		49D3DE8621DDE021005D3EAF /* LENetworkDownloadAgency.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LENetworkDownloadAgency.h; sourceTree = "<group>"; };
+		49D3DE8721DDE021005D3EAF /* LENetworkDownloadAgency.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LENetworkDownloadAgency.m; sourceTree = "<group>"; };
+		D694B69BF6D8FBA2E4A76D19 /* libPods-LENetwork.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LENetwork.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F66E6E4207917BB2C476AD7A /* Pods-LENetwork.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LENetwork.release.xcconfig"; path = "Pods/Target Support Files/Pods-LENetwork/Pods-LENetwork.release.xcconfig"; sourceTree = "<group>"; };
+		FECB6DFCB53AB4674B986946 /* Pods-LENetwork.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LENetwork.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LENetwork/Pods-LENetwork.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		496A890E21D4C2C4000FFFD4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA570F1DA73F4AF2EE6AAEFB /* libPods-LENetwork.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2B0C62F9456EDC7EF29CA438 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FECB6DFCB53AB4674B986946 /* Pods-LENetwork.debug.xcconfig */,
+				F66E6E4207917BB2C476AD7A /* Pods-LENetwork.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		496A890821D4C2C4000FFFD4 = {
+			isa = PBXGroup;
+			children = (
+				496A891321D4C2C4000FFFD4 /* LENetwork */,
+				496A891221D4C2C4000FFFD4 /* Products */,
+				2B0C62F9456EDC7EF29CA438 /* Pods */,
+				7BF7C6197BEAEBDD0A9C3588 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		496A891221D4C2C4000FFFD4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				496A891121D4C2C4000FFFD4 /* LENetwork.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		496A891321D4C2C4000FFFD4 /* LENetwork */ = {
+			isa = PBXGroup;
+			children = (
+				496A892D21D5C2B8000FFFD4 /* LENetwork */,
+				496A891421D4C2C4000FFFD4 /* AppDelegate.h */,
+				496A891521D4C2C4000FFFD4 /* AppDelegate.m */,
+				496A891721D4C2C4000FFFD4 /* ViewController.h */,
+				496A891821D4C2C4000FFFD4 /* ViewController.m */,
+				496A891A21D4C2C4000FFFD4 /* Main.storyboard */,
+				496A891D21D4C2C7000FFFD4 /* Assets.xcassets */,
+				496A891F21D4C2C7000FFFD4 /* LaunchScreen.storyboard */,
+				496A892221D4C2C7000FFFD4 /* Info.plist */,
+				496A892321D4C2C7000FFFD4 /* main.m */,
+			);
+			path = LENetwork;
+			sourceTree = "<group>";
+		};
+		496A892D21D5C2B8000FFFD4 /* LENetwork */ = {
+			isa = PBXGroup;
+			children = (
+				49D3DE8221DDDF35005D3EAF /* Public */,
+				49D3DE7F21DDDEEB005D3EAF /* Agency */,
+				49D3DE8021DDDEFB005D3EAF /* Utils */,
+			);
+			path = LENetwork;
+			sourceTree = "<group>";
+		};
+		49D3DE7F21DDDEEB005D3EAF /* Agency */ = {
+			isa = PBXGroup;
+			children = (
+				4971E1B021D74F590082EC53 /* LENetworkAgency.h */,
+				4971E1B121D74F590082EC53 /* LENetworkAgency.m */,
+				49D3DE8321DDDF72005D3EAF /* LENetworkUploadAgency.h */,
+				49D3DE8421DDDF72005D3EAF /* LENetworkUploadAgency.m */,
+				49D3DE8621DDE021005D3EAF /* LENetworkDownloadAgency.h */,
+				49D3DE8721DDE021005D3EAF /* LENetworkDownloadAgency.m */,
+			);
+			path = Agency;
+			sourceTree = "<group>";
+		};
+		49D3DE8021DDDEFB005D3EAF /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				496A893721D60547000FFFD4 /* LENetworkHeader.h */,
+				49D3DE7C21DDC655005D3EAF /* LENetworkRequestPool.h */,
+				49D3DE7D21DDC655005D3EAF /* LENetworkRequestPool.m */,
+				49D3DE7921DDB5BD005D3EAF /* LENetworkRequestModel.h */,
+				49D3DE7A21DDB5BD005D3EAF /* LENetworkRequestModel.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		49D3DE8221DDDF35005D3EAF /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				496A892E21D5C2CE000FFFD4 /* LENetworkConfig.h */,
+				496A892F21D5C2CE000FFFD4 /* LENetworkConfig.m */,
+				4971E1AD21D6FB610082EC53 /* LENetworkManager.h */,
+				4971E1AE21D6FB610082EC53 /* LENetworkManager.m */,
+			);
+			path = Public;
+			sourceTree = "<group>";
+		};
+		7BF7C6197BEAEBDD0A9C3588 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D694B69BF6D8FBA2E4A76D19 /* libPods-LENetwork.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		496A891021D4C2C4000FFFD4 /* LENetwork */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 496A892721D4C2C7000FFFD4 /* Build configuration list for PBXNativeTarget "LENetwork" */;
+			buildPhases = (
+				FC312CB56C0E8FC55CDFA262 /* [CP] Check Pods Manifest.lock */,
+				496A890D21D4C2C4000FFFD4 /* Sources */,
+				496A890E21D4C2C4000FFFD4 /* Frameworks */,
+				496A890F21D4C2C4000FFFD4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LENetwork;
+			productName = LENetwork;
+			productReference = 496A891121D4C2C4000FFFD4 /* LENetwork.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		496A890921D4C2C4000FFFD4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = LQQ;
+				TargetAttributes = {
+					496A891021D4C2C4000FFFD4 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+				};
+			};
+			buildConfigurationList = 496A890C21D4C2C4000FFFD4 /* Build configuration list for PBXProject "LENetwork" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 496A890821D4C2C4000FFFD4;
+			productRefGroup = 496A891221D4C2C4000FFFD4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				496A891021D4C2C4000FFFD4 /* LENetwork */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		496A890F21D4C2C4000FFFD4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				496A892121D4C2C7000FFFD4 /* LaunchScreen.storyboard in Resources */,
+				496A891E21D4C2C7000FFFD4 /* Assets.xcassets in Resources */,
+				496A891C21D4C2C4000FFFD4 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FC312CB56C0E8FC55CDFA262 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LENetwork-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		496A890D21D4C2C4000FFFD4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4971E1B221D74F590082EC53 /* LENetworkAgency.m in Sources */,
+				496A891921D4C2C4000FFFD4 /* ViewController.m in Sources */,
+				496A893021D5C2CE000FFFD4 /* LENetworkConfig.m in Sources */,
+				496A892421D4C2C7000FFFD4 /* main.m in Sources */,
+				4971E1AF21D6FB610082EC53 /* LENetworkManager.m in Sources */,
+				49D3DE7B21DDB5BD005D3EAF /* LENetworkRequestModel.m in Sources */,
+				49D3DE8821DDE021005D3EAF /* LENetworkDownloadAgency.m in Sources */,
+				49D3DE8521DDDF72005D3EAF /* LENetworkUploadAgency.m in Sources */,
+				496A891621D4C2C4000FFFD4 /* AppDelegate.m in Sources */,
+				49D3DE7E21DDC655005D3EAF /* LENetworkRequestPool.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		496A891A21D4C2C4000FFFD4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				496A891B21D4C2C4000FFFD4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		496A891F21D4C2C7000FFFD4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				496A892021D4C2C7000FFFD4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		496A892521D4C2C7000FFFD4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		496A892621D4C2C7000FFFD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		496A892821D4C2C7000FFFD4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FECB6DFCB53AB4674B986946 /* Pods-LENetwork.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T24XQT78M7;
+				INFOPLIST_FILE = LENetwork/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.jesusLove.LENetwork;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		496A892921D4C2C7000FFFD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F66E6E4207917BB2C476AD7A /* Pods-LENetwork.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T24XQT78M7;
+				INFOPLIST_FILE = LENetwork/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.jesusLove.LENetwork;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		496A890C21D4C2C4000FFFD4 /* Build configuration list for PBXProject "LENetwork" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				496A892521D4C2C7000FFFD4 /* Debug */,
+				496A892621D4C2C7000FFFD4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		496A892721D4C2C7000FFFD4 /* Build configuration list for PBXNativeTarget "LENetwork" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				496A892821D4C2C7000FFFD4 /* Debug */,
+				496A892921D4C2C7000FFFD4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 496A890921D4C2C4000FFFD4 /* Project object */;
+}

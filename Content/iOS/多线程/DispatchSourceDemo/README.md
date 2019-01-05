@@ -1,5 +1,7 @@
 # Dispath Source Timer 定时器
 
+代码片段：
+
 ```Objective-c
 - (void)startRoundDispathTimerWithDuration:(CGFloat)duration {
     self.roundLayer.strokeStart = 0;
@@ -28,3 +30,10 @@
 ```
 
 参考：DispathSourceDemo示例项目
+
+
+`dispatch_time` 和 `dispatch_walltime`区别？
+
+* `dispatch_time`：第一个参数指定时间的开始，第二个参数是时间间隔，`1ull * NSEC_PER_SEC`为1秒。通常用来指定相对时间。
+
+* `dispatch_walltime`：用来指定绝对时间。例如：2019.1.1 12:12:12。使用`struct timespec`类型类获取`dispatch_time`类型的值。
