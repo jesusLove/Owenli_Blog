@@ -206,3 +206,7 @@ dispatch_semaphore_signal(_lock);
 
 存储操作被封装到`YYKVStorage`中。`YYKVStorageItem`用来存储键值对和元数据。`YYKVStorage`封装访问数据库的方法，存储、读取、删除等。
 
+# 参考
+
+* [YYCache 设计思路](https://blog.ibireme.com/2015/10/26/yycache/)
+* [NSHash​Table & NSMap​Table](https://nshipster.cn/nshashtable-and-nsmaptable/)
