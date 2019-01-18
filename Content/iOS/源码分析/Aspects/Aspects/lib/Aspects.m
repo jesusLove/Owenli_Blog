@@ -165,23 +165,23 @@ static BOOL aspect_remove(AspectIdentifier *aspect, NSError **error) {
     return success;
 }
 // 使用互斥锁
-static void aspect_performLocked(dispatch_block_t block) {
-    static pthread_mutex_t lock;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        pthread_mutex_init(&lock, 0);
-    });
-    pthread_mutex_lock(&lock);
-    block();
-    pthread_mutex_unlock(&lock);
-}
-// 自旋锁存在，优先级旋转问题。
 //static void aspect_performLocked(dispatch_block_t block) {
-//    static OSSpinLock aspect_lock = OS_SPINLOCK_INIT;
-//    OSSpinLockLock(&aspect_lock);
+//    static pthread_mutex_t lock;
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//        pthread_mutex_init(&lock, 0);
+//    });
+//    pthread_mutex_lock(&lock);
 //    block();
-//    OSSpinLockUnlock(&aspect_lock);
+//    pthread_mutex_unlock(&lock);
 //}
+// 自旋锁存在，优先级旋转问题。
+static void aspect_performLocked(dispatch_block_t block) {
+    static OSSpinLock aspect_lock = OS_SPINLOCK_INIT;
+    OSSpinLockLock(&aspect_lock);
+    block();
+    OSSpinLockUnlock(&aspect_lock);
+}
 
 static SEL aspect_aliasForSelector(SEL selector) {
     NSCParameterAssert(selector);
