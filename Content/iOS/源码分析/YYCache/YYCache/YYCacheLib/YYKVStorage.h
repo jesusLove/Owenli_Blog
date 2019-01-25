@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  YYKVStorageItem is used by `YYKVStorage` to store key-value pair and meta data.
  Typically, you should not use this class directly.
+ 
+ YYKVStorageItem是数据表对应的模型。
  */
 @interface YYKVStorageItem : NSObject
 @property (nonatomic, strong) NSString *key;                ///< key
@@ -43,7 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  See <http://www.sqlite.org/intern-v-extern-blob.html> for more information.
  */
-typedef NS_ENUM(NSUInteger, YYKVStorageType) {
+typedef NS_ENUM(NSUInteger, YYKVStorageType) { 
     
     /// The `value` is stored as a file in file system.
     YYKVStorageTypeFile = 0,

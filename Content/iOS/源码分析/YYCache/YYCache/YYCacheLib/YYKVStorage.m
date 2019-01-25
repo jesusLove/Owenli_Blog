@@ -31,29 +31,37 @@ static NSString *const kTrashDirectoryName = @"trash";
 
 
 /*
+ 磁盘缓存文件结构
  File:
- /path/
+ /path/ <-- path是初始化时使用的变量，对应三个数据库文件，两个目录
       /manifest.sqlite
       /manifest.sqlite-shm
       /manifest.sqlite-wal
-      /data/
+      /data/ <--- 文件数据
            /e10adc3949ba59abbe56e057f20f883e
            /e10adc3949ba59abbe56e057f20f883e
-      /trash/
+      /trash/ <--- 垃圾箱
             /unused_file_or_folder
  
- SQL:
+ SQL: 表结构
  create table if not exists manifest (
-    key                 text,
-    filename            text,
-    size                integer,
-    inline_data         blob,
-    modification_time   integer,
-    last_access_time    integer,
+    key                 text, 唯一标示
+    filename            text, 文件名
+    size                integer, 大小
+    inline_data         blob, 存储的二进制数据
+    modification_time   integer, 修改操作时间
+    last_access_time    integer, 最后访问时间，用户实现LRU算法
     extended_data       blob,
     primary key(key)
  ); 
  create index if not exists last_access_time_idx on manifest(last_access_time);
+ 
+ 如何实现SQLite结合文件存储
+ 
+ * 在某个临界值时，直接读取文件的效率高于从数据库读取。
+ * 将数据库和文件结合，将用户存储数据的相关信息都放在数据库中
+ * 将存储数据的二进制文件，根据情况分别处理，要么存储在表的inline_data中，要么存储在/data文件中。
+ 
  */
 
 /// Returns nil in App Extension.
@@ -83,15 +91,15 @@ static UIApplication *_YYSharedApplication() {
     NSString *_dataPath;
     NSString *_trashPath;
     
-    sqlite3 *_db;
-    CFMutableDictionaryRef _dbStmtCache;
+    sqlite3 *_db; // sqlite3 对象
+    CFMutableDictionaryRef _dbStmtCache; // 用于缓存sqlite3_stmt,缓存编译好的SQL语句
     NSTimeInterval _dbLastOpenErrorTime;
     NSUInteger _dbOpenErrorCount;
 }
 
 
 #pragma mark - db
-
+// 打开数据库
 - (BOOL)_dbOpen {
     if (_db) return YES;
     
@@ -160,7 +168,7 @@ static UIApplication *_YYSharedApplication() {
     }
     return YES;
 }
-
+// 初始化数据库
 - (BOOL)_dbInitialize {
     NSString *sql = @"pragma journal_mode = wal; pragma synchronous = normal; create table if not exists manifest (key text, filename text, size integer, inline_data blob, modification_time integer, last_access_time integer, extended_data blob, primary key(key)); create index if not exists last_access_time_idx on manifest(last_access_time);";
     return [self _dbExecute:sql];
@@ -171,7 +179,7 @@ static UIApplication *_YYSharedApplication() {
     // Cause a checkpoint to occur, merge `sqlite-wal` file to `sqlite` file.
     sqlite3_wal_checkpoint(_db, NULL);
 }
-
+// 执行sql语句
 - (BOOL)_dbExecute:(NSString *)sql {
     if (sql.length == 0) return NO;
     if (![self _dbCheck]) return NO;
@@ -188,15 +196,23 @@ static UIApplication *_YYSharedApplication() {
 
 - (sqlite3_stmt *)_dbPrepareStmt:(NSString *)sql {
     if (![self _dbCheck] || sql.length == 0 || !_dbStmtCache) return NULL;
+    // 1. 查看缓存中是否存在
     sqlite3_stmt *stmt = (sqlite3_stmt *)CFDictionaryGetValue(_dbStmtCache, (__bridge const void *)(sql));
+    
     if (!stmt) {
+        // 2. 不存在
+        // 参数 1：打开的数据库
+        // 参数 2：准备执行的语句
+        // 参数 4：编译好的SQL语句地址
         int result = sqlite3_prepare_v2(_db, sql.UTF8String, -1, &stmt, NULL);
         if (result != SQLITE_OK) {
             if (_errorLogsEnabled) NSLog(@"%s line:%d sqlite stmt prepare error (%d): %s", __FUNCTION__, __LINE__, result, sqlite3_errmsg(_db));
             return NULL;
         }
+        // 添加到cache中
         CFDictionarySetValue(_dbStmtCache, (__bridge const void *)(sql), stmt);
     } else {
+        // 若存在，直接重置
         sqlite3_reset(stmt);
     }
     return stmt;
@@ -328,7 +344,7 @@ static UIApplication *_YYSharedApplication() {
     }
     return YES;
 }
-
+// 实现LRU算法
 - (BOOL)_dbDeleteItemsWithTimeEarlierThan:(int)time {
     NSString *sql = @"delete from manifest where last_access_time < ?1;";
     sqlite3_stmt *stmt = [self _dbPrepareStmt:sql];
@@ -628,7 +644,8 @@ static UIApplication *_YYSharedApplication() {
     NSString *path = [_dataPath stringByAppendingPathComponent:filename];
     return [[NSFileManager defaultManager] removeItemAtPath:path error:NULL];
 }
-
+// 将文件移动到垃圾箱中`trash`文件夹
+// 使用NSFileManager
 - (BOOL)_fileMoveAllToTrash {
     CFUUIDRef uuidRef = CFUUIDCreate(NULL);
     CFStringRef uuid = CFUUIDCreateString(NULL, uuidRef);
@@ -641,7 +658,8 @@ static UIApplication *_YYSharedApplication() {
     CFRelease(uuid);
     return suc;
 }
-
+// 在后台清除垃圾箱
+// 创建一个新的队列。
 - (void)_fileEmptyTrashInBackground {
     NSString *trashPath = _trashPath;
     dispatch_queue_t queue = _trashQueue;
@@ -654,6 +672,7 @@ static UIApplication *_YYSharedApplication() {
         }
     });
 }
+// 使用 /data 存储数据和使用 /trash 删除数据。为了防止删除和添加之间的冲突，防止误操作。
 
 
 #pragma mark - private

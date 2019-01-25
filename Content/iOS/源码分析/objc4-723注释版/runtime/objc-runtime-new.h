@@ -25,11 +25,11 @@
 #define _OBJC_RUNTIME_NEW_H
 
 #if __LP64__
-typedef uint32_t mask_t;  // x86_64 & arm64 asm are less efficient with 16-bits
+typedef uint32_t mask_t;  // unsigned int x86_64 & arm64 asm are less efficient with 16-bits
 #else
-typedef uint16_t mask_t;
+typedef uint16_t mask_t; // unsigned short 
 #endif
-typedef uintptr_t cache_key_t;
+typedef uintptr_t cache_key_t; // ---> unsigned long 类型
 
 struct swift_class_t;
 
@@ -50,7 +50,7 @@ public:
 
 // 缓存曾经调用过的方法，提高查找速率
 struct cache_t {
-    struct bucket_t *_buckets; // 散列表
+    struct bucket_t *_buckets; // 散列表， SLE ：IMP
     mask_t _mask; //散列表的长度 - 1
     mask_t _occupied; // 已经缓存的方法数量，散列表的长度使大于已经缓存的数量的。
 

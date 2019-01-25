@@ -177,14 +177,15 @@ static inline dispatch_queue_t YYMemoryCacheGetReleaseQueue() {
     _YYLinkedMap *_lru;
     dispatch_queue_t _queue;
 }
-
+// 检测内存是否超限的定时任务
+// 递归 + 延时 方法来实现
 - (void)_trimRecursively {
     __weak typeof(self) _self = self;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(_autoTrimInterval * NSEC_PER_SEC)), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         __strong typeof(_self) self = _self;
         if (!self) return;
         [self _trimInBackground];
-        [self _trimRecursively];
+        [self _trimRecursively]; // 递归
     });
 }
 
@@ -278,6 +279,8 @@ static inline dispatch_queue_t YYMemoryCacheGetReleaseQueue() {
     if (finish) return;
     
     NSMutableArray *holder = [NSMutableArray new];
+    // 1. 迭代部分
+    // 循环移除为结点，直到满足ageLimit条件
     while (!finish) {
         if (pthread_mutex_trylock(&_lock) == 0) {
             if (_lru->_tail && (now - _lru->_tail->_time) > ageLimit) {
@@ -288,9 +291,10 @@ static inline dispatch_queue_t YYMemoryCacheGetReleaseQueue() {
             }
             pthread_mutex_unlock(&_lock);
         } else {
-            usleep(10 * 1000); //10 ms
+            usleep(10 * 1000); //10 ms 获取失败，线程挂起10ms
         }
     }
+    // 2. 释放部分
     if (holder.count) {
         dispatch_queue_t queue = _lru->_releaseOnMainThread ? dispatch_get_main_queue() : YYMemoryCacheGetReleaseQueue();
         dispatch_async(queue, ^{
@@ -299,6 +303,8 @@ static inline dispatch_queue_t YYMemoryCacheGetReleaseQueue() {
     }
 }
 
+// 监听到内存警告
+// 根据使用者自定义来触发是否需要清除内存
 - (void)_appDidReceiveMemoryWarningNotification {
     if (self.didReceiveMemoryWarningBlock) {
         self.didReceiveMemoryWarningBlock(self);
@@ -307,7 +313,7 @@ static inline dispatch_queue_t YYMemoryCacheGetReleaseQueue() {
         [self removeAllObjects];
     }
 }
-
+// 进入后台响应
 - (void)_appDidEnterBackgroundNotification {
     if (self.didEnterBackgroundBlock) {
         self.didEnterBackgroundBlock(self);
@@ -332,7 +338,9 @@ static inline dispatch_queue_t YYMemoryCacheGetReleaseQueue() {
     _shouldRemoveAllObjectsOnMemoryWarning = YES;
     _shouldRemoveAllObjectsWhenEnteringBackground = YES;
     
+    // 监听内存警告
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_appDidReceiveMemoryWarningNotification) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
+    // 进入后台
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_appDidEnterBackgroundNotification) name:UIApplicationDidEnterBackgroundNotification object:nil];
     
     [self _trimRecursively];
@@ -402,6 +410,7 @@ static inline dispatch_queue_t YYMemoryCacheGetReleaseQueue() {
     _YYLinkedMapNode *node = CFDictionaryGetValue(_lru->_dic, (__bridge const void *)(key));
     // 3. 存在，重置时间和插入到首部
     if (node) {
+        // 更新这块内存的时间，然后将结点移动到头部。基于时间的优先级排序。
         node->_time = CACurrentMediaTime();
         [_lru bringNodeToHead:node];
     }
