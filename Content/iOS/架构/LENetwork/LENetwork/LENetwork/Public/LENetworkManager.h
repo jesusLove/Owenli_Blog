@@ -37,6 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)cancelAllCurrentRequests;
 - (void)cancelCurrentRequest:(NSString *)url;
 
+/*
 #pragma mark - # Upload
 - (void)UploadImages:(NSString *)url
                      parameters:(id _Nullable)parameters
@@ -82,7 +83,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)cancelDownloadRequest:(NSString *)url;
 - (void)cancelDownloadRequests:(NSArray *)urls;
 
-
+*/
 
 
 @end

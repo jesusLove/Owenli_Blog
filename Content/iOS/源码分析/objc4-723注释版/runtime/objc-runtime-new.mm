@@ -4519,6 +4519,7 @@ static Method _class_getMethod(Class cls, SEL sel)
 /***********************************************************************
 * class_getInstanceMethod.  Return the instance method for the
 * specified class and selector.
+ 查找IMP
 **********************************************************************/
 Method class_getInstanceMethod(Class cls, SEL sel)
 {
@@ -4532,6 +4533,7 @@ Method class_getInstanceMethod(Class cls, SEL sel)
 #warning fixme build and search caches
         
     // Search method lists, try method resolver, etc.
+    // 查找方法列表，尝试方法解析
     lookUpImpOrNil(cls, sel, nil, 
                    NO/*initialize*/, NO/*cache*/, YES/*resolver*/);
 

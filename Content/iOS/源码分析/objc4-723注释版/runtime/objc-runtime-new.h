@@ -221,7 +221,7 @@ struct method_t {
         { return lhs.name < rhs.name; }
     };
 };
-
+// 实例
 struct ivar_t {
 #if __x86_64__
     // *offset was originally 64-bit on some x86_64 platforms.
@@ -232,8 +232,8 @@ struct ivar_t {
     // offset for their benefit.
 #endif
     int32_t *offset;
-    const char *name;
-    const char *type;
+    const char *name; // 名称
+    const char *type; // 类型
     // alignment is sometimes -1; use alignment() instead
     uint32_t alignment_raw;
     uint32_t size;
@@ -243,7 +243,7 @@ struct ivar_t {
         return 1 << alignment_raw;
     }
 };
-
+// 属性结构体
 struct property_t {
     const char *name;
     const char *attributes;
@@ -280,7 +280,7 @@ typedef uintptr_t protocol_ref_t;  // protocol_t *, but unremapped
 // Bits 0..15 are reserved for Swift's use.
 
 #define PROTOCOL_FIXED_UP_MASK (PROTOCOL_FIXED_UP_1 | PROTOCOL_FIXED_UP_2)
-
+// 协议结构体继承自objc_object
 struct protocol_t : objc_object {
     const char *mangledName;
     struct protocol_list_t *protocols;
@@ -531,20 +531,20 @@ struct locstamped_category_list_t {
 struct class_ro_t {
     uint32_t flags; // 判断是否为元类
     uint32_t instanceStart;
-    uint32_t instanceSize;
+    uint32_t instanceSize; // 实例对象占用的内存空间
 #ifdef __LP64__
     uint32_t reserved;
 #endif
 
     const uint8_t * ivarLayout;
     
-    const char * name;
+    const char * name; //类名
     /*
         一维数组，只读的，包含的是类的初始信息
      */
     method_list_t * baseMethodList;
     protocol_list_t * baseProtocols;
-    const ivar_list_t * ivars;
+    const ivar_list_t * ivars; // 成员变量列表
 
     const uint8_t * weakIvarLayout;
     property_list_t *baseProperties;
@@ -1334,7 +1334,7 @@ struct swift_class_t : objc_class {
     }
 };
 
-
+// 分类结构体
 struct category_t {
     const char *name;
     classref_t cls;
