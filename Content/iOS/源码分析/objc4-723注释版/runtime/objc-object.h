@@ -200,13 +200,14 @@ objc_object::initInstanceIsa(Class cls, bool hasCxxDtor)
 
     initIsa(cls, true, hasCxxDtor);
 }
-
+// 初始化 isa
 inline void 
 objc_object::initIsa(Class cls, bool nonpointer, bool hasCxxDtor) 
 { 
     assert(!isTaggedPointer()); 
-    
+    // nonpointer 为 false 。
     if (!nonpointer) {
+        // isa.cls 执行 当前的 cls
         isa.cls = cls;
     } else {
         assert(!DisableNonpointerIsa);
@@ -410,12 +411,20 @@ objc_object::clearDeallocating()
     assert(!sidetable_present());
 }
 
-
+/*
+    1. 当前对象没有被弱引用过，没有关联对象、没有析构函数、引用计数值isa能存放下、nonpointer为1 时直接释放。
+    2. 调用object_dispose() 内部调用方法 objc_destructInstance(obj) 它是dealloc 核心方法三部操作： 1：析构继承链；2：移除引用；3：clear
+ */
 inline void
 objc_object::rootDealloc()
 {
     if (isTaggedPointer()) return;  // fixme necessary?
-
+    // 当前没有实例变量，直接释放
+    // nonpointer 为 1 表示 isa 指针中可以存储更多的信息。为 0 表示普通的指针。
+    // weakly_referenced 是否被弱引用过
+    // has_assoc 是否设置过关联对象，没有关联对象时释放的更快
+    // has_cxx_dtor 是否有析构函数
+    // has_sidetable_rc 1：表示引用计数值存放在sidetable表中，如果为 0：引用计数存放在isa中。
     if (fastpath(isa.nonpointer  &&  
                  !isa.weakly_referenced  &&  
                  !isa.has_assoc  &&  
@@ -426,7 +435,8 @@ objc_object::rootDealloc()
         free(this);
     } 
     else {
-        object_dispose((id)this);
+        // 销毁对象。
+        object_dispose((id)this); // 销毁
     }
 }
 

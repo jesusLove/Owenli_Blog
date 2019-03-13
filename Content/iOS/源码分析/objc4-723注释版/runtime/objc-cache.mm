@@ -23,11 +23,11 @@
 
 /***********************************************************************
 * objc-cache.m
-* Method cache management
-* Cache flushing
-* Cache garbage collection
-* Cache instrumentation
-* Dedicated allocator for large caches
+* Method cache management 方法缓存管理
+* Cache flushing 缓存刷新
+* Cache garbage collection 垃圾回收
+* Cache instrumentation 缓存仪表
+* Dedicated allocator for large caches 大缓存专用分配器
 **********************************************************************/
 
 

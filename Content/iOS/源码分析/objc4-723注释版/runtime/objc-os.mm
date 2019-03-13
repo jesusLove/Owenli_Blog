@@ -871,7 +871,15 @@ void _objc_atfork_child()
 * Bootstrap initialization. Registers our image notifier with dyld.
 * Called by libSystem BEFORE library initialization time
 **********************************************************************/
-
+// 初始化入口
+// 在程序启动时，`Runtime` 会调用该方法
+/*
+ 
+ 1. map_images => map_images_nolock() => _read_images() 最终调用 read_images() 进行大量的初始化操作。
+ 2. load_images 对应的是 load 方法，在 main 方法之前调用。
+ 2.1 load 方法是由系统调用，且只调用一次。 通常 Method swizzling 放在 load 中，因此在执行 main 函数之前，就可以对类方法进行交换。
+ 2.2 Category中重写其他方法，这会导致Category中的方法覆盖原来类的方法。load方法除外，所以Category和原类的load方法都会被执行。
+ */
 void _objc_init(void)
 {
     static bool initialized = false;
@@ -879,12 +887,16 @@ void _objc_init(void)
     initialized = true;
     
     // fixme defer initialization until an objc-using image is found?
-    environ_init();
+    // 各种初始化
+    environ_init(); // 初始化运行时环境
     tls_init();
     static_init();
     lock_init();
     exception_init();
-
+    // 注册三个方法
+    // map_images
+    // load_images
+    // unmap_image
     _dyld_objc_notify_register(&map_images, load_images, unmap_image);
 }
 

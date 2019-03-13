@@ -380,15 +380,17 @@ static NXMapTable *unattachedCategories(void)
 * Records an unattached category.
 * Locking: runtimeLock must be held by the caller.
 **********************************************************************/
+// 将category_t 添加到list中，并通过NXMapInsert函数更新所有类的Category列表。
 static void addUnattachedCategoryForClass(category_t *cat, Class cls, 
                                           header_info *catHeader)
 {
     runtimeLock.assertWriting();
 
     // DO NOT use cat->cls! cls may be cat->cls->isa instead
+    // 获取未添加的Category哈希表
     NXMapTable *cats = unattachedCategories();
     category_list *list;
-
+    // 获取到buckets中的 value 并向 Value 对应的数组中添加 Category_t
     list = (category_list *)NXMapGet(cats, cls);
     if (!list) {
         list = (category_list *)
@@ -397,6 +399,7 @@ static void addUnattachedCategoryForClass(category_t *cat, Class cls,
         list = (category_list *)
             realloc(list, sizeof(*list) + sizeof(list->list[0]) * (list->count + 1));
     }
+    // 替换之前的list字段
     list->list[list->count++] = (locstamped_category_t){cat, catHeader};
     NXMapInsert(cats, cls, list);
 }
@@ -681,6 +684,7 @@ attachCategories(Class cls, category_list *cats, bool flush_caches)
 * Fixes up cls's method list, protocol list, and property list.
 * Attaches any outstanding categories.
 * Locking: runtimeLock must be held by the caller
+ rw中的 method, property, protocol 初始化。
 **********************************************************************/
 static void methodizeClass(Class cls)
 {
@@ -697,17 +701,18 @@ static void methodizeClass(Class cls)
     }
 
     // Install methods and properties that the class implements itself.
+    // 方法 ro 移到 rw 中
     method_list_t *list = ro->baseMethods();
     if (list) {
         prepareMethodLists(cls, &list, 1, YES, isBundleClass(cls));
         rw->methods.attachLists(&list, 1);
     }
-
+    // 属性
     property_list_t *proplist = ro->baseProperties;
     if (proplist) {
         rw->properties.attachLists(&proplist, 1);
     }
-
+    // 协议
     protocol_list_t *protolist = ro->baseProtocols;
     if (protolist) {
         rw->protocols.attachLists(&protolist, 1);
@@ -1713,7 +1718,9 @@ static void reconcileInstanceVariables(Class cls, Class supercls, const class_ro
 * including allocating its read-write data.
 * Returns the real class structure for the class. 
 * Locking: runtimeLock must be write-locked by the caller
+
 **********************************************************************/
+// 初始化Class
 static Class realizeClass(Class cls)
 {
     runtimeLock.assertWriting();
@@ -1820,6 +1827,7 @@ static Class realizeClass(Class cls)
     }
 
     // Connect this class to its superclass's subclass lists
+    // 将类和子类串起来
     if (supercls) {
         addSubclass(supercls, cls);
     } else {
@@ -2013,6 +2021,7 @@ void _objc_flush_caches(Class cls)
 *
 * Locking: write-locks runtimeLock
 **********************************************************************/
+
 void
 map_images(unsigned count, const char * const paths[],
            const struct mach_header * const mhdrs[])
@@ -2031,6 +2040,15 @@ map_images(unsigned count, const char * const paths[],
 extern bool hasLoadMethods(const headerType *mhdr);
 extern void prepare_load_methods(const headerType *mhdr);
 
+/*
+ load 方法的实现逻辑，调用顺序。
+ 
+ 父类 -> 子类 -> 分类 ；注意 load 方法调用时直接调用的并没有通过 objc_sendMsg()
+ 
+ 1. prepare_load_methods() 准备 class load list 和 category load list
+ 2. call_load_methods 方法调用 => call_class_methods
+ */
+
 void
 load_images(const char *path __unused, const struct mach_header *mh)
 {
@@ -2042,11 +2060,11 @@ load_images(const char *path __unused, const struct mach_header *mh)
     // Discover load methods
     {
         rwlock_writer_t lock2(runtimeLock);
-        prepare_load_methods((const headerType *)mh);
+        prepare_load_methods((const headerType *)mh); // 准备加载列表， Class 和 Category
     }
 
     // Call +load methods (without runtimeLock - re-entrant)
-    call_load_methods(); // 调用load方法
+    call_load_methods(); // 调用load方法, load 方法的调用顺序 父类 > 子类 > 分类
 }
 
 
@@ -2303,6 +2321,20 @@ readProtocol(protocol_t *newproto, Class protocol_class,
 *
 * Locking: runtimeLock acquired by map_images
 **********************************************************************/
+/*
+ 
+ 做了大量的初始化工作。
+ 1. 加载所有的类到类的 gdb_objc_realized_classes 表中
+ 2. 对所有的类c做重映射
+ 3. 将所有的SEL都注册到namedSelectors 表中
+ 4. 修复函数指针遗留
+ 5. 将所有Protocol都添加到protoco_map表中
+ 6. 对所有Protocol做重映射。
+ 7. 初始化所有l非懒加载的类，进行 rw ro 等操作。
+ 8. 遍历已标记的懒加载的类，并进行初始化操作。
+ 9. 处理所有Category，包括 Class 和 MetaClass
+ 10. 初始化所有位初始化的类。
+ */
 void _read_images(header_info **hList, uint32_t hCount, int totalClasses, int unoptimizedTotalClasses)
 {
     header_info *hi;
@@ -2695,13 +2727,15 @@ static void schedule_class_load(Class cls)
 {
     if (!cls) return;
     assert(cls->isRealized());  // _read_images should realize
-
+    // 已经添加
     if (cls->data()->flags & RW_LOADED) return;
 
     // Ensure superclass-first ordering
+    // 确保父类先被添加到load列表中。默认是继承链的顺序。
     schedule_class_load(cls->superclass);
-
+    // 添加到列表
     add_class_to_loadable_list(cls);
+    // 设置 Flags 表示已经被添加过。
     cls->setInfo(RW_LOADED); 
 }
 
@@ -2719,20 +2753,24 @@ void prepare_load_methods(const headerType *mhdr)
     size_t count, i;
 
     runtimeLock.assertWriting();
-
+    // 获取非懒加载的类的列表
     classref_t *classlist = 
         _getObjc2NonlazyClassList(mhdr, &count);
     for (i = 0; i < count; i++) {
-        schedule_class_load(remapClass(classlist[i]));
+        // 设置Class的调用列表
+        schedule_class_load(remapClass(classlist[i])); // 将父类的添加在子类前面，因此调用的时候先调用父类的 load 方法。
     }
-
+    // 获取非懒加载的Category列表
     category_t **categorylist = _getObjc2NonlazyCategoryList(mhdr, &count);
     for (i = 0; i < count; i++) {
         category_t *cat = categorylist[i];
         Class cls = remapClass(cat->cls);
+        // 忽略弱连接的列表
         if (!cls) continue;  // category for ignored weak-linked class
+        // 实例化所属的类
         realizeClass(cls);
         assert(cls->ISA()->isRealized());
+        // 设置Category的调用列表
         add_category_to_loadable_list(cat);
     }
 }
@@ -4591,6 +4629,11 @@ IMP _class_lookupMethodAndLoadCache3(id obj, SEL sel, Class cls)
 *   must be converted to _objc_msgForward or _objc_msgForward_stret.
 *   If you don't want forwarding at all, use lookUpImpOrNil() instead.
 **********************************************************************/
+/*
+ 
+ 向对象发消息时，该函数会判断当前类是否被初始化，如果没有初始化会先进行初始化在调用方法。
+ 
+ */
 IMP lookUpImpOrForward(Class cls, SEL sel, id inst, 
                        bool initialize, bool cache, bool resolver)
 {
@@ -4599,7 +4642,8 @@ IMP lookUpImpOrForward(Class cls, SEL sel, id inst,
 
     runtimeLock.assertUnlocked();
 
-    // Optimistic cache lookup, 没有缓存不会进入
+    // Optimistic cache lookup,
+    // 检查缓存，如果存在缓存在缓存列表获取，返回IMP。
     if (cache) {
         imp = cache_getImp(cls, sel);
         if (imp) return imp;
@@ -4628,10 +4672,10 @@ IMP lookUpImpOrForward(Class cls, SEL sel, id inst,
         runtimeLock.unlockWrite();
         runtimeLock.read();
     }
-
+    // 是否初始化，未初始化先进性初始化后再调用。
     if (initialize  &&  !cls->isInitialized()) {
         runtimeLock.unlockRead();
-        _class_initialize (_class_getNonMetaClass(cls, inst));
+        _class_initialize (_class_getNonMetaClass(cls, inst)); // 进行初始化，只有在第一次调用时才会执行。
         runtimeLock.read();
         // If sel == initialize, _class_initialize will send +initialize and 
         // then the messenger will send +initialize again after this 
@@ -5445,6 +5489,11 @@ BOOL class_conformsToProtocol(Class cls, Protocol *proto_gen)
 * fixme
 * Locking: runtimeLock must be held by the caller
 **********************************************************************/
+/*
+ replace : YES、表示从 class_replaceMethod() 方法调用而来；NO、表示从 class_addMethod() 调用而来。
+ 工作：
+ 
+ */
 static IMP 
 addMethod(Class cls, SEL name, IMP imp, const char *types, bool replace)
 {
@@ -5456,16 +5505,18 @@ addMethod(Class cls, SEL name, IMP imp, const char *types, bool replace)
     assert(cls->isRealized());
 
     method_t *m;
+    // 1. 是否存在方法，存在则直接返回
     if ((m = getMethodNoSuper_nolock(cls, name))) {
         // already exists
         if (!replace) {
-            result = m->imp;
+            result = m->imp; // 从class_addMethod调用而来，如果存在直接返回。
         } else {
-            result = _method_setImplementation(cls, m, imp);
+            result = _method_setImplementation(cls, m, imp); // 从 class_replaceMethod() 调用而来，替换方法的实现。
         }
     } else {
         // fixme optimize
-        method_list_t *newlist;
+        // 2. 创建方法
+        method_list_t *newlist; // 创建一个结构体指针。初始化后添加到cls的methods方法列表中。
         newlist = (method_list_t *)calloc(sizeof(*newlist), 1);
         newlist->entsizeAndFlags = 
             (uint32_t)sizeof(method_t) | fixed_up_method_list;
@@ -5475,7 +5526,7 @@ addMethod(Class cls, SEL name, IMP imp, const char *types, bool replace)
         newlist->first.imp = imp;
 
         prepareMethodLists(cls, &newlist, 1, NO, NO);
-        cls->data()->methods.attachLists(&newlist, 1);
+        cls->data()->methods.attachLists(&newlist, 1); // 添加到方法列表中。
         flushCaches(cls);
 
         result = nil;
@@ -5484,7 +5535,9 @@ addMethod(Class cls, SEL name, IMP imp, const char *types, bool replace)
     return result;
 }
 
-
+/*
+  添加和替换方法都会调用 addMethod() 方法，不同点是添加方法时，传递的replace参数为NO；替换时传递replace参数为YES。
+ */
 BOOL 
 class_addMethod(Class cls, SEL name, IMP imp, const char *types)
 {
@@ -5510,6 +5563,13 @@ class_replaceMethod(Class cls, SEL name, IMP imp, const char *types)
 * Adds an ivar to a class.
 * Locking: acquires runtimeLock
 **********************************************************************/
+
+/*
+    向类中添加实例变量
+ 1. 不能向元类中添加实例变量。
+ 2. 不能像已存在的类添加实例变量，只能想通过Runtime API创建的类动态添加实例变量。
+ 3. 该函数调用在 objc_allocateClassPair() 之后，通过调用 objc_registerClassPair() 注册的类之间添加实例变量。
+ */
 BOOL 
 class_addIvar(Class cls, const char *name, size_t size, 
               uint8_t alignment, const char *type)
@@ -5888,6 +5948,7 @@ Class objc_initializeClassPair(Class superclass, const char *name, Class cls, Cl
 * fixme
 * Locking: acquires runtimeLock
 **********************************************************************/
+// 动态创建类
 Class objc_allocateClassPair(Class superclass, const char *name, 
                              size_t extraBytes)
 {
@@ -5902,6 +5963,7 @@ Class objc_allocateClassPair(Class superclass, const char *name,
     }
 
     // Allocate new classes.
+    // 创建类 和 元类
     cls  = alloc_class_for_subclass(superclass, extraBytes);
     meta = alloc_class_for_subclass(superclass, extraBytes);
 
@@ -6147,7 +6209,11 @@ objc_constructInstance(Class cls, void *bytes)
 * fixme
 * Locking: none
 **********************************************************************/
-
+/*
+    1. 获取对象内存大小，ro中InstanceSize大小d内存对其后加上 extraBytes 大小
+    2. 通过 calloc 分配内存空间。
+    3. 调用 initIsa() 初始化 isa 指针。
+ */
 static __attribute__((always_inline)) 
 id
 _class_createInstanceFromZone(Class cls, size_t extraBytes, void *zone, 
@@ -6163,14 +6229,15 @@ _class_createInstanceFromZone(Class cls, size_t extraBytes, void *zone,
     bool hasCxxDtor = cls->hasCxxDtor();
     bool fast = cls->canAllocNonpointer();
 
-    size_t size = cls->instanceSize(extraBytes);
+    size_t size = cls->instanceSize(extraBytes); // 对象大小， 获取的大小ro中instanceSize大小，注意这里进行内存对其和加上了 extraBytes 大小。
     if (outAllocatedSize) *outAllocatedSize = size;
 
     id obj;
+    // 初始化Isa指针，通过calloc分配内存
     if (!zone  &&  fast) {
-        obj = (id)calloc(1, size);
+        obj = (id)calloc(1, size); // 分配内存
         if (!obj) return nil;
-        obj->initInstanceIsa(cls, hasCxxDtor);
+        obj->initInstanceIsa(cls, hasCxxDtor); // 初始化ISA指针
     } 
     else {
         if (zone) {
@@ -6182,7 +6249,7 @@ _class_createInstanceFromZone(Class cls, size_t extraBytes, void *zone,
 
         // Use raw pointer isa on the assumption that they might be 
         // doing something weird with the zone or RR.
-        obj->initIsa(cls);
+        obj->initIsa(cls); // <---- 对 isa 指针进行初始化
     }
 
     if (cxxConstruct && hasCxxCtor) {
@@ -6293,16 +6360,24 @@ object_copyFromZone(id oldObj, size_t extraBytes, void *zone)
 * Removes associative references.
 * Returns `obj`. Does nothing if `obj` is nil.
 **********************************************************************/
-void *objc_destructInstance(id obj) 
+//dealloc 方法的核心实现
+/*
+ 1. 析构继承链 object_cxxDestruct()
+ 2. 移除对象的关联 _object_remove_assocations()
+ 3. 清除clear
+*/
+void *objc_destructInstance(id obj)
 {
     if (obj) {
         // Read all of the flags at once for performance.
+        // 判断是否有OC或者C++的析构函数
         bool cxx = obj->hasCxxDtor();
+        // 对象是否有相关联的引用
         bool assoc = obj->hasAssociatedObjects();
 
         // This order is important.
-        if (cxx) object_cxxDestruct(obj);
-        if (assoc) _object_remove_assocations(obj);
+        if (cxx) object_cxxDestruct(obj); // 对向前对象进行析构, 析构继承链中的所有类。
+        if (assoc) _object_remove_assocations(obj); // 移除所有对象的关联，例如，weak指针置为nil.
         obj->clearDeallocating();
     }
 
@@ -6315,12 +6390,13 @@ void *objc_destructInstance(id obj)
 * fixme
 * Locking: none
 **********************************************************************/
+// dealloc 调用
 id 
 object_dispose(id obj)
 {
     if (!obj) return nil;
 
-    objc_destructInstance(obj);    
+    objc_destructInstance(obj);    // dealloc 核心方法三部操作： 1：析构继承链；2：移除引用；3：clear
     free(obj);
 
     return nil;

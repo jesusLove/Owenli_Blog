@@ -1778,6 +1778,7 @@ _objc_rootAllocWithZone(Class cls, malloc_zone_t *zone)
 
 // Call [cls alloc] or [cls allocWithZone:nil], with appropriate 
 // shortcutting optimizations.
+// 创建实例, 调用 class_createInstance() 方法。
 static ALWAYS_INLINE id
 callAlloc(Class cls, bool checkNil, bool allocWithZone=false)
 {
@@ -1788,6 +1789,7 @@ callAlloc(Class cls, bool checkNil, bool allocWithZone=false)
         // No alloc/allocWithZone implementation. Go straight to the allocator.
         // fixme store hasCustomAWZ in the non-meta class and 
         // add it to canAllocFast's summary
+        // canAllocFast() 返回值是 false, 只会进入 else
         if (fastpath(cls->canAllocFast())) {
             // No ctors, raw isa, etc. Go straight to the metal.
             bool dtor = cls->hasCxxDtor();
@@ -1798,6 +1800,7 @@ callAlloc(Class cls, bool checkNil, bool allocWithZone=false)
         }
         else {
             // Has ctor or raw isa or something. Use the slower path.
+            // 通过 class_createInstance 创建对象
             id obj = class_createInstance(cls, 0);
             if (slowpath(!obj)) return callBadAllocHandler(cls);
             return obj;
@@ -2269,7 +2272,7 @@ void arr_init(void)
     return [self description];
 }
 
-
+// 等同于 alloc + init 方法。
 + (id)new {
     return [callAlloc(self, false/*checkNil*/) init];
 }
@@ -2341,9 +2344,9 @@ void arr_init(void)
 - (NSUInteger)retainCount {
     return ((id)self)->rootRetainCount();
 }
-
+// 初始化方法
 + (id)alloc {
-    return _objc_rootAlloc(self);
+    return _objc_rootAlloc(self); // 创建实例
 }
 
 // Replaced by ObjectAlloc
@@ -2366,6 +2369,7 @@ void arr_init(void)
 
 
 // Replaced by NSZombies
+// 内部调用了对象的 rootDealloc() 方法。
 - (void)dealloc {
     _objc_rootDealloc(self);
 }

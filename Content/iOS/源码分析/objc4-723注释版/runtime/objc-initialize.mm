@@ -481,6 +481,7 @@ void performForkChildInitialize(Class cls, Class supercls)
 * class_initialize.  Send the '+initialize' message on demand to any
 * uninitialized class. Force initialization of superclasses first.
 **********************************************************************/
+//
 void _class_initialize(Class cls)
 {
     assert(!cls->isMetaClass());
@@ -490,6 +491,7 @@ void _class_initialize(Class cls)
 
     // Make sure super is done initializing BEFORE beginning to initialize cls.
     // See note about deadlock above.
+    // 递归初始化父类, 这里不需要使用 super ，Runtime自动调用。
     supercls = cls->superclass;
     if (supercls  &&  !supercls->isInitialized()) {
         _class_initialize(supercls);
@@ -534,7 +536,8 @@ void _class_initialize(Class cls)
         @try
 #endif
         {
-            callInitialize(cls);
+            // 通过 objc_msgSend 调用
+            callInitialize(cls); // <--------- 1
 
             if (PrintInitializing) {
                 _objc_inform("INITIALIZE: thread %p: finished +[%s initialize]",
@@ -554,7 +557,7 @@ void _class_initialize(Class cls)
 #endif
         {
             // Done initializing.
-            lockAndFinishInitializing(cls, supercls);
+            lockAndFinishInitializing(cls, supercls); // < ------ 2
         }
         return;
     }

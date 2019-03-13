@@ -186,6 +186,7 @@ static void call_class_loads(void)
     int i;
     
     // Detach current loadable list.
+    // 分离当前可load的list。
     struct loadable_class *classes = loadable_classes;
     int used = loadable_classes_used;
     loadable_classes = nil;
@@ -193,6 +194,7 @@ static void call_class_loads(void)
     loadable_classes_used = 0;
     
     // Call all +loads for the detached list.
+    // 调用所有的 loads 方法。
     for (i = 0; i < used; i++) {
         Class cls = classes[i].cls;
         // 方法地址
@@ -348,16 +350,16 @@ void call_load_methods(void)
     loading = YES;
 
     void *pool = objc_autoreleasePoolPush();
-
+    
     do {
         // 1. Repeatedly call class +loads until there aren't any more
-        // 调用类的load方法
+        // 调用类的load方法，反复调用，知道数组中没有load方法。
         while (loadable_classes_used > 0) {
-            call_class_loads();
+            call_class_loads(); // 调用类方法列表  《 = 如何调用方法
         }
 
         // 2. Call category +loads ONCE
-        // 调用分类的load方法
+        // 调用分类的load方法，调用一次即可，没有父类。
         more_categories = call_category_loads();
 
         // 3. Run more +loads if there are classes OR more untried categories

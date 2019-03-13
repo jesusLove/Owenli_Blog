@@ -218,7 +218,7 @@ enum {
     OBJC_ASSOCIATION_GETTER_RETAIN      = (1 << 8), 
     OBJC_ASSOCIATION_GETTER_AUTORELEASE = (2 << 8)
 }; 
-
+// 关联对象 get 方法的实现逻辑
 id _object_get_associative_reference(id object, void *key) {
     id value = nil;
     uintptr_t policy = OBJC_ASSOCIATION_ASSIGN;
@@ -267,7 +267,7 @@ struct ReleaseValue {
         releaseValue(association.value(), association.policy());
     }
 };
-
+// 关联对象的 set 方法的实现。
 void _object_set_associative_reference(id object, void *key, id value, uintptr_t policy) {
     // retain the new value (if any) outside the lock.
     ObjcAssociation old_association(0, nil);
@@ -312,7 +312,7 @@ void _object_set_associative_reference(id object, void *key, id value, uintptr_t
     // release the old value (outside of the lock).
     if (old_association.hasValue()) ReleaseValue()(old_association);
 }
-
+// 移除对象的关联
 void _object_remove_assocations(id object) {
     vector< ObjcAssociation,ObjcAllocator<ObjcAssociation> > elements;
     {

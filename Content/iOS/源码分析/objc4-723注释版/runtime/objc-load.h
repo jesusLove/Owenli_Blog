@@ -33,7 +33,7 @@
 #include <mach-o/loader.h>
 
 /* dynamically loading Mach-O object files that contain Objective-C code */
-
+// 提供动态加载Mach-O对象文件
 OBJC_EXPORT long objc_loadModules (
 	char * _Nullable modlist[_Nullable], 
 	void * _Nullable errStream,
