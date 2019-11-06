@@ -7,19 +7,18 @@
 - 专业/学历: 计算机科学与技术/本科
 - 联系电话: +86 136-7532-1943
 - 电子邮箱: [jesus_lqq@163.com](jesus_lqq@163.com)
-- 个人博客: [https://jesuslove.github.io/](https://jesuslove.github.io/)
-- GitHub: [https://github.com/JesusLove](https://github.com/JesusLove)
-- 简书: [紫电清霜Owenli](https://www.jianshu.com/u/10328c2b7d75)
+- 个人博客: [https://blog.itlee.top/](https://blog.itlee.top/)
 
 #### 技能
 
 - 熟练使用 `Objective-C` 和 `Swift` 语言。
 - 对 `Runtime` 、`RunLoop` 和 `内存管理` 有充分的理解。
 - 熟悉多线程技术，了解多线程常见问题和解决方法。
-- 了解 `HTTP` 协议。
 - 熟悉 `微信`、`支付宝` 支付。
 - 熟悉 `Javascript` 了解 `ES6` 语法。
 - 熟悉小程序开发，熟悉 `Vue` 前端开发框架。
+- 熟练使用 `Git` 版本控制工具。
+- 了解 `HTTP` 协议。
 
 #### 工作经验
 
