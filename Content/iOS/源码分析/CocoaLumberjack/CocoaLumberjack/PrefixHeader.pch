@@ -1,0 +1,20 @@
+//
+//  PrefixHeader.pch
+//  CocoaLumberjack
+//
+//  Created by LQQ on 2019/1/14.
+//  Copyright © 2019 Elink. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "CocoaLumberjack.h"
+
+#ifdef DEBUG
+static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
+#else
+static const DDLogLevel ddLogLevel = DDLogLevelError;
+#endif
+
+#endif /* PrefixHeader_pch */
